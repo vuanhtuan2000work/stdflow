@@ -23,6 +23,23 @@ export default withPWA({
   disable: process.env.NODE_ENV === 'development',
   workboxOptions: {
     disableDevLogs: true,
+    // Fix TrustedScript errors by using safe strategies
+    runtimeCaching: [
+      {
+        urlPattern: /^https:\/\/.*\.(?:png|jpg|jpeg|svg|gif|webp)$/,
+        handler: 'CacheFirst',
+        options: {
+          cacheName: 'images-cache',
+          expiration: {
+            maxEntries: 100,
+            maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
+          },
+        },
+      },
+    ],
   },
+  // Disable service worker registration in development
+  // This prevents TrustedScript errors during dev
+  register: process.env.NODE_ENV === 'production',
 })(nextConfig)
 

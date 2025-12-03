@@ -13,7 +13,9 @@
     "verify": "bash scripts/verify-deployment.sh",
     "setup-env": "bash scripts/setup-env.sh",
     "pre-deploy": "bash scripts/pre-deploy.sh",
-    "check-node": "bash scripts/check-node.sh"
+    "check-node": "bash scripts/check-node.sh",
+    "test:prod": "npm run build && npm start",
+    "generate-icons": "node scripts/generate-icons-with-sharp.js"
   },
   "dependencies": {
     "@ducanh2912/next-pwa": "^10.2.9",
