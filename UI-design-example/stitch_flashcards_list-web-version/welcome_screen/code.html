@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StudyFlow Welcome</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#4A90E2",
+              "background-light": "#f6f6f8",
+              "background-dark": "#121121",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+<div class="flex flex-col grow">
+<div class="@container">
+<div class="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden min-h-80" data-alt="A friendly vector illustration of a person climbing a staircase made of books, representing learning and progress" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCKdtwmZ4l4wRGhAiY9LqgITOAlIcvRT73WOG2PZvOOXBOvccdfwd_3aE5AcxVo5A-n61JUBl_0OK2Jb6M1jJGxesU99LW-GOam5akAU_mF7PPIHmCxnL9cLdPBFDfABsdCw4xAOvC3XoBGm-JByX-GUYTx7Kh_HKmlTEgHIGQqaxftF245ZaIKQty8PGK2mvGWeFfuCDkPXw2UgXia_a1CWTnhQa3ZEBAaV7CP3MI-bl8lAyNRFCTbslMyai4UdAWO9dmuEm4nxYs");'></div>
+</div>
+<h1 class="text-gray-900 dark:text-white tracking-tight text-[32px] font-bold leading-tight px-4 text-center pb-3 pt-6">Welcome to StudyFlow</h1>
+<p class="text-gray-600 dark:text-gray-400 text-base font-normal leading-normal pb-3 pt-1 px-4 text-center">Your daily partner in smart learning.</p>
+<div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+<div class="flex flex-1 gap-3 rounded-lg border border-gray-200 dark:border-[#3e3d52] bg-white/50 dark:bg-[#1d1c26] p-4 flex-col">
+<span class="material-symbols-outlined text-primary" style="font-size: 24px;">checklist</span>
+<div class="flex flex-col gap-1">
+<h2 class="text-gray-900 dark:text-white text-base font-bold leading-tight">Personalized Study Plans</h2>
+<p class="text-gray-500 dark:text-[#9f9eb7] text-sm font-normal leading-normal">Create custom learning schedules tailored to your goals.</p>
+</div>
+</div>
+<div class="flex flex-1 gap-3 rounded-lg border border-gray-200 dark:border-[#3e3d52] bg-white/50 dark:bg-[#1d1c26] p-4 flex-col">
+<span class="material-symbols-outlined text-primary" style="font-size: 24px;">trending_up</span>
+<div class="flex flex-col gap-1">
+<h2 class="text-gray-900 dark:text-white text-base font-bold leading-tight">Track Your Progress</h2>
+<p class="text-gray-500 dark:text-[#9f9eb7] text-sm font-normal leading-normal">Visualize your learning streaks and performance over time.</p>
+</div>
+</div>
+<div class="flex flex-1 gap-3 rounded-lg border border-gray-200 dark:border-[#3e3d52] bg-white/50 dark:bg-[#1d1c26] p-4 flex-col">
+<span class="material-symbols-outlined text-primary" style="font-size: 24px;">lightbulb</span>
+<div class="flex flex-col gap-1">
+<h2 class="text-gray-900 dark:text-white text-base font-bold leading-tight">Smart Learning Tools</h2>
+<p class="text-gray-500 dark:text-[#9f9eb7] text-sm font-normal leading-normal">Utilize flashcards, quizzes, and focus timers.</p>
+</div>
+</div>
+</div>
+<div class="flex w-full flex-row items-center justify-center gap-3 py-5">
+<div class="h-2 w-2 rounded-full bg-primary"></div>
+<div class="h-2 w-2 rounded-full bg-gray-300 dark:bg-[#3e3d52]"></div>
+<div class="h-2 w-2 rounded-full bg-gray-300 dark:bg-[#3e3d52]"></div>
+</div>
+<div class="flex-grow"></div>
+</div>
+<div class="w-full p-4 flex flex-col gap-4 bg-background-light dark:bg-background-dark sticky bottom-0 border-t border-gray-200 dark:border-gray-800">
+<button class="w-full text-center text-white bg-primary font-medium text-base leading-normal px-6 py-3 rounded-lg">Sign Up for Free</button>
+<button class="w-full text-center text-gray-900 dark:text-white font-medium text-base leading-normal px-6 py-3 rounded-lg bg-gray-200 dark:bg-[#3e3d52]">Already have an account? Log In</button>
+</div>
+</div>
+</body></html>

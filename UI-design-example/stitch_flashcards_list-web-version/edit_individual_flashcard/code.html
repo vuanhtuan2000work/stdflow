@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Edit Individual Flashcard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#007AFF",
+              "background-light": "#F9F9F9",
+              "background-dark": "#131221",
+              "text-light": "#1C1C1E",
+              "text-dark": "#FFFFFF",
+              "secondary-text-light": "#8E8E93",
+              "secondary-text-dark": "#9795c6",
+              "destructive": "#FF3B30",
+              "input-bg-light": "#FFFFFF",
+              "input-bg-dark": "#272546",
+              "border-light": "#E5E5EA",
+              "border-dark": "#3A3A3C",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="flex flex-col mx-auto w-full max-w-md">
+<!-- Top App Bar -->
+<header class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10 border-b border-border-light dark:border-border-dark">
+<button class="text-primary text-base font-normal leading-normal tracking-[-0.015em] shrink-0">Cancel</button>
+<h1 class="text-text-light dark:text-text-dark text-lg font-bold leading-tight tracking-[-0.015em]">Edit Flashcard</h1>
+<button class="text-primary text-base font-bold leading-normal tracking-[0.015em] shrink-0">Save</button>
+</header>
+<main class="flex-1 px-4 pt-6 pb-8">
+<div class="flex flex-col space-y-6">
+<!-- Subject List Item -->
+<div class="flex items-center gap-4 bg-input-bg-light dark:bg-input-bg-dark px-4 min-h-14 justify-between rounded-lg border border-border-light dark:border-border-dark">
+<div class="flex items-center gap-4">
+<div class="text-text-light dark:text-text-dark flex items-center justify-center shrink-0 size-10">
+<span class="material-symbols-outlined text-secondary-text-light dark:text-secondary-text-dark">school</span>
+</div>
+<p class="text-text-light dark:text-text-dark text-base font-normal leading-normal flex-1 truncate">Subject</p>
+</div>
+<div class="flex items-center gap-2">
+<p class="text-secondary-text-light dark:text-secondary-text-dark text-base font-normal leading-normal">Biology</p>
+<span class="material-symbols-outlined text-secondary-text-light dark:text-secondary-text-dark">arrow_forward_ios</span>
+</div>
+</div>
+<!-- Front (Question) TextField -->
+<div class="flex flex-wrap items-end gap-4">
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-secondary-text-light dark:text-secondary-text-dark text-sm font-medium leading-normal pb-2 px-1">FRONT (QUESTION)</p>
+<textarea class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary border-border-light dark:border-border-dark bg-input-bg-light dark:bg-input-bg-dark min-h-36 placeholder:text-secondary-text-light dark:placeholder:text-secondary-text-dark p-4 text-base font-normal leading-normal">What is the powerhouse of the cell?</textarea>
+</label>
+</div>
+<!-- Back (Answer) TextField -->
+<div class="flex flex-wrap items-end gap-4">
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-secondary-text-light dark:text-secondary-text-dark text-sm font-medium leading-normal pb-2 px-1">BACK (ANSWER)</p>
+<textarea class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary border-border-light dark:border-border-dark bg-input-bg-light dark:bg-input-bg-dark min-h-36 placeholder:text-secondary-text-light dark:placeholder:text-secondary-text-dark p-4 text-base font-normal leading-normal">The mitochondria is the powerhouse of the cell.</textarea>
+</label>
+</div>
+</div>
+</main>
+<!-- Delete Button -->
+<footer class="px-4 py-3 mt-auto">
+<button class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-input-bg-light dark:bg-input-bg-dark text-destructive text-base font-medium leading-normal tracking-[0.015em]">
+<span class="truncate">Delete Card</span>
+</button>
+</footer>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StudyFlow Desktop Leaderboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#5048e5",
+            "background-light": "#f6f6f8",
+            "background-dark": "#121121",
+          },
+          fontFamily: {
+            "display": ["Inter"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .material-symbols-outlined.fill {
+        font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex h-screen w-full flex-row">
+<!-- SideNavBar -->
+<nav class="flex h-full w-64 flex-col justify-between border-r border-slate-200/10 bg-[#121117] p-4">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-4 text-white px-3 py-2">
+<div class="size-8">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_535)">
+<path clip-rule="evenodd" d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z" fill="currentColor" fill-rule="evenodd"></path>
+</g>
+<defs>
+<clippath id="clip0_6_535"><rect fill="white" height="48" width="48"></rect></clippath>
+</defs>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">StudyFlow</h2>
+</div>
+<div class="flex flex-col gap-2 pt-4">
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-white/70 hover:bg-[#2a2938] hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-sm font-medium leading-normal">Home</p>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-white/70 hover:bg-[#2a2938] hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">book</span>
+<p class="text-sm font-medium leading-normal">Courses</p>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-white/70 hover:bg-[#2a2938] hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">style</span>
+<p class="text-sm font-medium leading-normal">Flashcards</p>
+</a>
+<a class="flex items-center gap-3 rounded-lg bg-primary px-3 py-2 text-white" href="#">
+<span class="material-symbols-outlined fill">emoji_events</span>
+<p class="text-sm font-medium leading-normal">Leaderboard</p>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-white/70 hover:bg-[#2a2938] hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium leading-normal">Settings</p>
+</a>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-white/70 hover:bg-[#2a2938] hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<p class="text-sm font-medium leading-normal">Help</p>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-white/70 hover:bg-[#2a2938] hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<p class="text-sm font-medium leading-normal">Logout</p>
+</a>
+</div>
+</nav>
+<!-- Main Content -->
+<div class="flex flex-1 flex-col overflow-y-auto">
+<!-- TopNavBar -->
+<header class="flex h-16 items-center justify-between whitespace-nowrap border-b border-solid border-slate-200/10 bg-background-light/80 px-10 dark:bg-background-dark/80 backdrop-blur-sm sticky top-0 z-10">
+<label class="relative flex min-w-40 max-w-64 flex-col !h-10">
+<div class="text-[#9f9eb7] absolute left-3 top-1/2 -translate-y-1/2">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input h-full w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg border-none bg-slate-200/50 text-slate-900 placeholder:text-[#9f9eb7] focus:outline-0 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background-light px-10 text-base font-normal leading-normal dark:bg-[#2a2938] dark:text-white dark:focus:ring-offset-background-dark" placeholder="Search" value=""/>
+</label>
+<div class="flex items-center gap-4">
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-slate-200/50 text-slate-900 dark:bg-[#2a2938] dark:text-white">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Avatar of Alex Doe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAEYW8d_29yrNNqRhXQrMeRt303n6q9I2ryGBmlfMooeTLefBYjLFw9GN_A-2FuSvIY_0eO8yS8MIKMOVe18N5IotQwVNQfYszj4ayhXGpTKm7Z2JHD5K6TeQTeq8rarTCZNZFVQfhxZNXPzvjHv2krHhiXw6tmzkjmfLwnZ0PSVyUPRKocZuJl9cIrwhlotmKHWfPNohZlqJ3aqe2wtW5eIWGtg4a2tY9sFChRSaG-WCdFCC1gXvF6KEYg3eDChZ2VcEdx4qe2FTM");'></div>
+<div class="flex flex-col text-left">
+<h1 class="text-slate-900 dark:text-white text-sm font-medium leading-normal">Alex Doe</h1>
+<p class="text-slate-500 dark:text-[#9f9eb7] text-xs font-normal leading-normal">alex.doe@email.com</p>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 p-6 lg:p-10">
+<div class="mx-auto max-w-5xl">
+<!-- PageHeading -->
+<div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+<p class="text-slate-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Bảng Xếp Hạng</p>
+<!-- Chips -->
+<div class="flex flex-wrap gap-2">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary px-4 text-white">
+<p class="text-sm font-medium leading-normal">Hàng tuần</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-slate-200/50 px-4 text-slate-700 hover:bg-slate-200 dark:bg-[#2a2938] dark:text-white dark:hover:bg-primary/50 transition-colors">
+<p class="text-sm font-medium leading-normal">Tất cả thời gian</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-slate-200/50 px-4 text-slate-700 hover:bg-slate-200 dark:bg-[#2a2938] dark:text-white dark:hover:bg-primary/50 transition-colors">
+<p class="text-sm font-medium leading-normal">Bạn bè</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-slate-200/50 px-4 text-slate-700 hover:bg-slate-200 dark:bg-[#2a2938] dark:text-white dark:hover:bg-primary/50 transition-colors">
+<p class="text-sm font-medium leading-normal">Toàn cầu</p>
+</button>
+</div>
+</div>
+<!-- Table -->
+<div class="overflow-hidden rounded-xl border border-slate-200/10 bg-[#1d1c26]/20 dark:bg-[#1d1c26]">
+<table class="w-full">
+<thead class="bg-[#2a2938]/10 dark:bg-[#2a2938]">
+<tr>
+<th class="w-24 px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-[#9f9eb7]">Rank</th>
+<th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-[#9f9eb7]">User</th>
+<th class="w-48 px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-[#9f9eb7]">Study Points</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200/10">
+<tr class="transition-colors hover:bg-slate-200/20 dark:hover:bg-[#2a2938]/40">
+<td class="h-[72px] px-4 py-2 text-center text-lg font-bold text-[#FFD700]">1</td>
+<td class="h-[72px] px-4 py-2">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Avatar image of Isabella" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDsmIsbGEUZwCPSubG1I1CijaJZ2XP8yc21jTSLCr7FbrT0KVEirOPkepQxda_G3MhfnBRq2G-X_R7U8GNO1bcMw_4zxAtmhVdD1fbqJcyXnWIJ_FYGzSztT-dKJmkwHZIeapDhjJcDxFeI5YO2XhWkinjvje98zSvLsn7h1gjSS3qQ7yigOmQMv2P-dwKN3VBXlDpVSbBa1rmllLVxPWXWtO2vDtBOkrmyF2sxG2VKM87j72NgNtJnlu01SwsyS-8el7s_1QIfaRs");'></div>
+<span class="text-slate-900 dark:text-white text-sm font-medium leading-normal">Isabella</span>
+</div>
+</td>
+<td class="h-[72px] px-4 py-2 text-slate-600 dark:text-[#9f9eb7] text-sm font-normal leading-normal">15,240</td>
+</tr>
+<tr class="transition-colors hover:bg-slate-200/20 dark:hover:bg-[#2a2938]/40">
+<td class="h-[72px] px-4 py-2 text-center text-lg font-bold text-[#C0C0C0]">2</td>
+<td class="h-[72px] px-4 py-2">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Avatar image of Michael" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA4m1Pr2GsjoiHr1U2h7_GvC4Bjjh1VHj_CkDSuFb9xfNfV1lg0mR46c5VHegf6lN33ydgcMoYzX7b6o5hBjdDH8kK1p_t0_3QpW5Bfz9KRPH-oB37CkzL7ER88cd-jXprQhHrISO0sK8raILdm98CNlDxNGNMOJI0FeFwzQVk1RzMX7qFUC1WV7nvuYaejqCFfokD7wB6vvkNyyiENWc0O0oiHLZTBQ6tTEk3toY3oLbKJeh6zdT6z72LQhD4DNAb4ASu5TMlsf-g");'></div>
+<span class="text-slate-900 dark:text-white text-sm font-medium leading-normal">Michael</span>
+</div>
+</td>
+<td class="h-[72px] px-4 py-2 text-slate-600 dark:text-[#9f9eb7] text-sm font-normal leading-normal">14,980</td>
+</tr>
+<tr class="transition-colors hover:bg-slate-200/20 dark:hover:bg-[#2a2938]/40">
+<td class="h-[72px] px-4 py-2 text-center text-lg font-bold text-[#CD7F32]">3</td>
+<td class="h-[72px] px-4 py-2">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Avatar image of Sophia" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBWj0HePzGEnspr4tFfSKBQ415L5bs6_sJZ87azoj9R5k7k2Sb7b7zRfq3vUUm8pCXcTtiLdhyTKM7FL7LimaDoBvNnHfibF34YCKkZgxFzO_PN7Q7svjMZIWy33Rs5ygXfBqeFukT6og_u9lM19YW3x7aHdV57w88p_TzYxFZ55SSIHbl3WOK8k5heUtWy1uwScn4UhGZQynQcuQ9THsStOW_LcJn1XwawHUCTfi4tuQHgfmWoHTKLbYFFH-hHNWPKZAwm99pxdXE");'></div>
+<span class="text-slate-900 dark:text-white text-sm font-medium leading-normal">Sophia</span>
+</div>
+</td>
+<td class="h-[72px] px-4 py-2 text-slate-600 dark:text-[#9f9eb7] text-sm font-normal leading-normal">14,550</td>
+</tr>
+<tr class="transition-colors hover:bg-slate-200/20 dark:hover:bg-[#2a2938]/40">
+<td class="h-[72px] px-4 py-2 text-center text-slate-500 dark:text-[#9f9eb7] text-sm font-normal leading-normal">4</td>
+<td class="h-[72px] px-4 py-2">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Avatar image of Liam" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCvQuXRlXcgCJ8McyiJPR9fEQEIsYQ3u2y6MGiqsAFmE8UiN0CHCoLVBoonJxagjKh7ij8E1gwbe-3OidQqq6-ckgoiAQI1n7D2Q3n-3chPa8sFqVBOOr68Nr9so-qQj07DLsozJ8tVvP3UnUvagHtSrLVIUD9UXefKzB3EqgNHmiIfPGOisksoZpiw3PYP1VN8qPUU8gqOTTYdp_WFb2GAHhcTzcHL6OPF_T7dWNPQKsmyAjUUgLOtfmYau8_w8zDRxccCrTUOVkw");'></div>
+<span class="text-slate-900 dark:text-white text-sm font-medium leading-normal">Liam</span>
+</div>
+</td>
+<td class="h-[72px] px-4 py-2 text-slate-600 dark:text-[#9f9eb7] text-sm font-normal leading-normal">14,210</td>
+</tr>
+<tr class="transition-colors hover:bg-slate-200/20 dark:hover:bg-[#2a2938]/40">
+<td class="h-[72px] px-4 py-2 text-center text-slate-500 dark:text-[#9f9eb7] text-sm font-normal leading-normal">5</td>
+<td class="h-[72px] px-4 py-2">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Avatar image of Olivia" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD96HXkqjzctytENozSXsMsJikHC_bqXgkI74tcuQmmRNvkiuuOxWURFaw8W-1f9BAMNwawcunnT5aVFBJ3MQqaNVp5A7keRH6b1oCPBw0rLBF7wUET2f5VA3JSdxTF63cvSuZgaSaulMtgcZn0LlsyXb25XKe0nabuUE0JOqT_ASZEEf9UV3Hy-yy23w87MCCDdpvBMvet-i-R_eq_y4J1346IJ0iwuAnErno2QetZff_lrbtDBlDggwjmMwrAcHDTKk8Vnpzue-w");'></div>
+<span class="text-slate-900 dark:text-white text-sm font-medium leading-normal">Olivia</span>
+</div>
+</td>
+<td class="h-[72px] px-4 py-2 text-slate-600 dark:text-[#9f9eb7] text-sm font-normal leading-normal">13,990</td>
+</tr>
+<tr class="transition-colors hover:bg-slate-200/20 dark:hover:bg-[#2a2938]/40">
+<td class="h-[72px] px-4 py-2 text-center text-slate-500 dark:text-[#9f9eb7] text-sm font-normal leading-normal">6</td>
+<td class="h-[72px] px-4 py-2">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Avatar image of Noah" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBTqdQ1rLQm7nxM7A_lHNF0FlPtXSKujSFQ4ovGXXOWHBdJb-4-xXTModhElKMbmE09zoK40uqe7q7u-9vQ130XMgsuv7OHjoKe_Anntv_KZKT4YoIN7LI2NKK3_Mor2Xwgonet1vQAw-ApyC0baMn3hZ7sd0cVif9bEZ53NJREWRDqz9YA6yfVIhotOk67X_lPSxQ3Qp7r2_Zcpm0q5XWLJK1bmfNspiTvEroTlfZ8q1hhbHT8J9Ru0CyPiwZvFxxGFszn2Rl-mdA");'></div>
+<span class="text-slate-900 dark:text-white text-sm font-medium leading-normal">Noah</span>
+</div>
+</td>
+<td class="h-[72px] px-4 py-2 text-slate-600 dark:text-[#9f9eb7] text-sm font-normal leading-normal">13,750</td>
+</tr>
+<tr class="transition-colors hover:bg-slate-200/20 dark:hover:bg-[#2a2938]/40">
+<td class="h-[72px] px-4 py-2 text-center text-slate-500 dark:text-[#9f9eb7] text-sm font-normal leading-normal">7</td>
+<td class="h-[72px] px-4 py-2">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Avatar image of Emma" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBiqqcrcISxhOjZzUKDI7vTj7UEDD4P1f1ieCvEtZUcfRTzMQN0xRz9PAJRwdGEQMTRNrq2-Q5-b9bbnNyuSctFH2XmN0nzCyYuietShDRdtvrCg-J3nf-sV_ra8BRt23znRDJUPs1jT9l7RSnaqG3rGXhqwHhm54ldyEWElf53Gj03WW5z_dA_N4SkouObadv6KVflbYQY3lnfwJXo51nG74QJPzphIJXucxORHjDACqX8nPq3WJM7-dt8KYkZL3VPX5rOmUOsZHQ");'></div>
+<span class="text-slate-900 dark:text-white text-sm font-medium leading-normal">Emma</span>
+</div>
+</td>
+<td class="h-[72px] px-4 py-2 text-slate-600 dark:text-[#9f9eb7] text-sm font-normal leading-normal">13,420</td>
+</tr>
+<tr class="bg-primary/20 ring-2 ring-primary">
+<td class="h-[72px] px-4 py-2 text-center text-primary dark:text-primary-400 text-sm font-bold leading-normal">8</td>
+<td class="h-[72px] px-4 py-2">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 ring-2 ring-primary ring-offset-2 ring-offset-primary/20" data-alt="Avatar image of Alex Doe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCWkZtmoJqZtXWuI1WBwhbswPWCeNjEVb_WSt88aNtoWRYTNj5j7rJxVisg1eWcw3HHv40n2VSYbRyNv6Iq5SD99wjeHE9X_d3EUvnrGT0BWU1DrLSUrOfEb3wRsnf_tN9RepaQ1beEvfUavx7ehgpYkKAeucwNfFyLP7rFh57xI2HU1TEqp6X1FXg6y2L3ogTgdBUQCIojx32sWAl_PSKev0aSyqOH0O-ZwSYgQQA2D8LLukQmesZFzmGyQxWAOQ0u8AfYiQrJyd8");'></div>
+<span class="text-slate-900 dark:text-white text-sm font-medium leading-normal">Alex Doe (You)</span>
+</div>
+</td>
+<td class="h-[72px] px-4 py-2 text-primary dark:text-primary-400 text-sm font-bold leading-normal">13,100</td>
+</tr>
+<tr class="transition-colors hover:bg-slate-200/20 dark:hover:bg-[#2a2938]/40">
+<td class="h-[72px] px-4 py-2 text-center text-slate-500 dark:text-[#9f9eb7] text-sm font-normal leading-normal">9</td>
+<td class="h-[72px] px-4 py-2">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Avatar image of William" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuChuDhGb6wAoG0NenuJmHzj7gzldSFC_kzrUIcneH0OEA_aXbMiqDaAvWItvn4a_X-PHXnJHSP5oogpb-GEPPxIFxMZdGzyMbeUMy7AXY6yQFInCLTw2m5zOgfoaggT8CjA42HhHAke2rWItBDCnnH70mo7lN3wEBYWwPZy2kH7FmNVfiHhbCvky9RKav7ry89aAxfcf1Iy_r-l76Eyx94l2khZoO94OXCID73Gdestt7sbG2LV5dm1R3ttuvXZ7qXw9-e4RO5covc");'></div>
+<span class="text-slate-900 dark:text-white text-sm font-medium leading-normal">William</span>
+</div>
+</td>
+<td class="h-[72px] px-4 py-2 text-slate-600 dark:text-[#9f9eb7] text-sm font-normal leading-normal">12,880</td>
+</tr>
+<tr class="transition-colors hover:bg-slate-200/20 dark:hover:bg-[#2a2938]/40">
+<td class="h-[72px] px-4 py-2 text-center text-slate-500 dark:text-[#9f9eb7] text-sm font-normal leading-normal">10</td>
+<td class="h-[72px] px-4 py-2">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Avatar image of Ava" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAs10uhFYx--Hqg4SLDfW-Y78vvoeBaAo6_QnYJuGqRludVlNlqMAkY0hxFdGihpABBvuaxS2bWa3kxep_0Ppr0PsZJGBRKCwemdjUYGlreKdvl0uXUkmwT6fbY4g2HiNDpaZBfIRwqk8GixK43lhJx9315gJJDCA0FbsJmq0LtTGkxBTtgkvezfaA3LgNhRQnZ39Mott-7SmeuLIMska3ubURkW1qcOSGL9RWUqgOVU-HX2xZj5o6TvIyCKHVba9OXWU9ODwsaoCM");'></div>
+<span class="text-slate-900 dark:text-white text-sm font-medium leading-normal">Ava</span>
+</div>
+</td>
+<td class="h-[72px] px-4 py-2 text-slate-600 dark:text-[#9f9eb7] text-sm font-normal leading-normal">12,650</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

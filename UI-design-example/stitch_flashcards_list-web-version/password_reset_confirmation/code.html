@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Password Reset Confirmation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#5048e5",
+              "background-light": "#f6f6f8",
+              "background-dark": "#121121",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- Top App Bar with back button -->
+<div class="flex items-center p-4">
+<button class="flex size-10 shrink-0 items-center justify-center text-zinc-900 dark:text-white">
+<span class="material-symbols-outlined !text-2xl">arrow_back_ios_new</span>
+</button>
+</div>
+<div class="flex flex-1 flex-col items-center justify-center p-4 text-center">
+<!-- Success Icon -->
+<div class="mb-8 flex h-24 w-24 items-center justify-center rounded-full bg-emerald-500/10">
+<div class="flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500/20">
+<span class="material-symbols-outlined !text-5xl text-emerald-400">mark_email_read</span>
+</div>
+</div>
+<!-- Headline Text -->
+<h1 class="text-zinc-900 dark:text-white tracking-tight text-3xl font-bold leading-tight px-4 pb-3">Check Your Email</h1>
+<!-- Body Text -->
+<p class="text-zinc-600 dark:text-zinc-400 text-base font-normal leading-relaxed pb-3 pt-1 px-4 max-w-sm">
+                We've sent a password reset link to your email. Please check your inbox and follow the instructions.
+            </p>
+</div>
+<div class="w-full p-4 pt-8">
+<!-- Single Button -->
+<div class="flex py-3">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-5 flex-1 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] shadow-lg shadow-primary/20">
+<span class="truncate">Back to Login</span>
+</button>
+</div>
+<!-- Secondary Text Link -->
+<div class="flex justify-center py-4">
+<button class="text-primary text-sm font-medium">Didn't receive an email?</button>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PWA Install Prompt (Mobile Banner)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5048e5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#121121",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-screen w-full flex-col">
+<!-- Placeholder content for the main app screen -->
+<div class="flex-grow p-6 text-gray-700 dark:text-gray-300">
+<h1 class="text-2xl font-bold mb-4">Your Progress</h1>
+<div class="space-y-4">
+<div class="h-24 rounded-lg bg-white dark:bg-gray-800/50 animate-pulse"></div>
+<div class="h-40 rounded-lg bg-white dark:bg-gray-800/50 animate-pulse"></div>
+<div class="h-32 rounded-lg bg-white dark:bg-gray-800/50 animate-pulse"></div>
+</div>
+</div>
+<!-- PWA Install Prompt Banner -->
+<div class="fixed bottom-0 left-0 right-0 w-full p-4 z-50">
+<div class="mx-auto max-w-md rounded-xl bg-white dark:bg-gray-900/90 backdrop-blur-sm shadow-2xl shadow-black/20 ring-1 ring-black/5 dark:ring-white/10">
+<div class="relative flex items-center gap-4 p-4">
+<button class="absolute -top-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full bg-gray-200/80 dark:bg-gray-700/80 text-gray-600 dark:text-gray-300 backdrop-blur-sm ring-1 ring-black/5 dark:ring-white/10">
+<span class="material-symbols-outlined text-base" data-icon="close">close</span>
+</button>
+<div class="shrink-0">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-14" data-alt="StudyFlow app icon with a gradient background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuApyB_JGfBufjCKL7HGa-NSrAO21mvOyVy2YcR91IHkTbXRI2z_RE35NCJYjQVvvm71ElSYMc_MyhG0GnGMYbDzvIwEyJcWQjUl5kgb2OQJ6crGC0Nx28f8m-oMMkb7fOu_DfY-JEhSeodJtmo-L166vu0W4Crn3-7dt6KWvFChy_udyxxREVWio5zkcixYYE65PZbV2bQWg20sEHm-tWNGMGZhfMwhJRSu6mSJrTHRnit0P8D_XbsSd0Tu6AEXhwqw2d3BT44l_9U");'></div>
+</div>
+<div class="flex flex-col justify-center flex-grow min-w-0">
+<p class="text-gray-900 dark:text-white text-base font-semibold leading-tight truncate">StudyFlow</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-tight truncate">Add to Home Screen for quick access</p>
+</div>
+<div class="shrink-0">
+<button class="px-5 py-2 rounded-full bg-primary text-white text-sm font-semibold leading-normal hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">Install</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

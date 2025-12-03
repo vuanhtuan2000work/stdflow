@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Flashcards List</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#5048e5",
+            "background-light": "#f6f6f8",
+            "background-dark": "#121117",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 flex h-16 shrink-0 items-center justify-between border-b border-white/5 bg-background-light/80 px-4 backdrop-blur-sm dark:bg-background-dark/80">
+<button class="flex h-10 w-10 items-center justify-center rounded-full text-zinc-900 dark:text-white">
+<span class="material-symbols-outlined text-2xl">search</span>
+</button>
+<h1 class="text-lg font-bold text-zinc-900 dark:text-white">Flashcards</h1>
+<button class="flex h-10 w-10 items-center justify-center rounded-full text-zinc-900 dark:text-white">
+<span class="material-symbols-outlined text-2xl">filter_list</span>
+</button>
+</header>
+<!-- Main Content: Flashcard List -->
+<main class="flex-1 overflow-y-auto p-4 pt-6">
+<div class="flex flex-col gap-4">
+<!-- Card 1 -->
+<div class="flex flex-col items-stretch justify-start rounded-xl bg-white shadow-sm dark:bg-[#1d1c26]">
+<div class="w-full bg-center bg-no-repeat aspect-[2/1] bg-cover rounded-t-xl" data-alt="Abstract gradient from blue to purple" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuALoNky0wzpZZ8YapqAbUi41NBMauZc-BjQCyI6KWjVbhrLGPCFEbUura3CM4lsf4xh5_YKjSFX2RT8f1r83bJ52F4GA31CMYn5z330gbK9V-mdOu77_mznIikzH-sHcedXF8oAgVCk1hIhFTHXeFgXuvEisq1Abio-4p6LT5k7XWn8LsmDyNzWbdrBbBK1W4mNR3TrBpSPU-PI_JJ2gZn2nOF01iaJEDqoMAezr4r9QrozCyiK-7rQ5UNl3yM3VMHXFfookLDc1ew");'></div>
+<div class="flex w-full grow flex-col items-stretch justify-center gap-4 p-4">
+<div class="flex items-start justify-between gap-4">
+<p class="text-lg font-bold leading-tight tracking-[-0.015em] text-zinc-900 dark:text-white">Spanish Vocabulary</p>
+<button class="flex h-8 w-8 items-center justify-center rounded-full text-zinc-500 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-700">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between text-sm text-zinc-600 dark:text-[#9f9eb7]">
+<span>54 Cards</span>
+<span>75%</span>
+</div>
+<div class="h-2 w-full rounded-full bg-zinc-200 dark:bg-zinc-700">
+<div class="h-2 rounded-full bg-primary" style="width: 75%;"></div>
+</div>
+</div>
+<button class="flex min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-base font-medium leading-normal mt-2">
+<span class="truncate">Study Now</span>
+</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex flex-col items-stretch justify-start rounded-xl bg-white shadow-sm dark:bg-[#1d1c26]">
+<div class="w-full bg-center bg-no-repeat aspect-[2/1] bg-cover rounded-t-xl" data-alt="Abstract gradient from green to teal" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDcn-59z1oFlaCnJPrh2nR3z9G6beahdxEzF2wBSAAJg5bteJwDE6Q3t0sTXhhrFL6fNvLnR5KVLQ83sjz8--_XMT1ledWKqzN2cDFXohX_sqNLkoDm8zGf-9yAAblr1mcNyzuDwoN6Md6RSxjaIk7tBvKxx-dhGynoPEY8IyEl9RuJxYATOUbdiOg_HORp-MyGF8H_pwyGg2FXg0tRUqBAzP5IwxgJAZ6e1S5RDemVjY0e3SwJSzwIHIeYHAohQxZNhYVIejEAUWI");'></div>
+<div class="flex w-full grow flex-col items-stretch justify-center gap-4 p-4">
+<div class="flex items-start justify-between gap-4">
+<p class="text-lg font-bold leading-tight tracking-[-0.015em] text-zinc-900 dark:text-white">Organic Chemistry</p>
+<button class="flex h-8 w-8 items-center justify-center rounded-full text-zinc-500 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-700">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between text-sm text-zinc-600 dark:text-[#9f9eb7]">
+<span>120 Cards</span>
+<span>40%</span>
+</div>
+<div class="h-2 w-full rounded-full bg-zinc-200 dark:bg-zinc-700">
+<div class="h-2 rounded-full bg-primary" style="width: 40%;"></div>
+</div>
+</div>
+<button class="flex min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-base font-medium leading-normal mt-2">
+<span class="truncate">Study Now</span>
+</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="flex flex-col items-stretch justify-start rounded-xl bg-white shadow-sm dark:bg-[#1d1c26]">
+<div class="w-full bg-center bg-no-repeat aspect-[2/1] bg-cover rounded-t-xl" data-alt="Abstract gradient from orange to red" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCNC_mmQ5hnzP17YNtn9Z1z1PHb7r1bmzsDyAGBLB-tkFxU3s8cviSo73TiyDHKw47XGuWXegsHt2PdQTDxZVsHwNFdGxWk5w3oQtEuAe11WNji9znyGirytFA6_5f56iL04MnymSupyXxYrtjLJgqGwMPeD4CnnjaHckayCV3PTqk0qFyoHbMGi90F508f6Vx0iTywX-cmWkjpUsZNo-EzFAwHhMQ1hQ1OgLh52DKgQNOt3cOH518lzUNZtqgQoNDxiJwIVsu01fM");'></div>
+<div class="flex w-full grow flex-col items-stretch justify-center gap-4 p-4">
+<div class="flex items-start justify-between gap-4">
+<p class="text-lg font-bold leading-tight tracking-[-0.015em] text-zinc-900 dark:text-white">US History</p>
+<button class="flex h-8 w-8 items-center justify-center rounded-full text-zinc-500 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-700">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between text-sm text-zinc-600 dark:text-[#9f9eb7]">
+<span>88 Cards</span>
+<span>95%</span>
+</div>
+<div class="h-2 w-full rounded-full bg-zinc-200 dark:bg-zinc-700">
+<div class="h-2 rounded-full bg-primary" style="width: 95%;"></div>
+</div>
+</div>
+<button class="flex min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-base font-medium leading-normal mt-2">
+<span class="truncate">Study Now</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<div class="fixed bottom-6 right-6 z-20">
+<button class="flex h-14 w-14 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-primary text-white shadow-lg transition-transform hover:scale-105">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+</div>
+</body></html>

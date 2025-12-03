@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StudyFlow Desktop Achievements</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 1,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#5048e5",
+              "background-light": "#f6f6f8",
+              "background-dark": "#121121",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex h-screen w-full">
+<!-- SideNavBar -->
+<aside class="flex flex-col w-64 bg-[#1e1e2e] p-4 text-white shrink-0">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCKwVUox4dYVyDeCDs5H7WaNgU1GM71EPGNbVDztxSDKR1HLcfcOatQfhVKV6cwq8ZJk_3oFmORaCAuvb7hhqc9e77coTIzapxMm8tD3yPR-V1_6VaJ2sfmY-1g-Uuix15R8u8gphgyGjCfniRfJvNhEstRf7ZfUg-kijzUtvbeXPAuMAVjLNsSBkgoJJeYsB8VxcdqfK4jisqYEb4kisszneWgwCv6UUnD1oglXPxPTmZwWUeF5K5VwEKHw7Fsm_p7a5-jVvyyyvY");'></div>
+<div class="flex flex-col">
+<h1 class="text-white text-base font-medium leading-normal">Alex Morgan</h1>
+<p class="text-[#9f9eb7] text-sm font-normal leading-normal">Level 12 Learner</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2 mt-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<p class="text-white text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 0;">book</span>
+<p class="text-white text-sm font-medium leading-normal">Courses</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 0;">monitoring</span>
+<p class="text-white text-sm font-medium leading-normal">Progress</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary" href="#">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+<p class="text-white text-sm font-medium leading-normal">Achievements</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 0;">settings</span>
+<p class="text-white text-sm font-medium leading-normal">Settings</p>
+</a>
+</nav>
+</div>
+<div class="mt-auto">
+<button class="w-full flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Upgrade to Pro</span>
+</button>
+</div>
+</aside>
+<!-- Main Content -->
+<div class="flex-1 flex flex-col overflow-hidden">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 px-10 py-3 bg-[#1e1e2e] shrink-0">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L1 9l11 7 11-7L12 2zm0 10.84L5.16 9 12 4.16 18.84 9 12 12.84zM1 10.5v3.01l11 7 11-7v-3.01l-11 7-11-7z"></path></svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">StudyFlow</h2>
+</div>
+<label class="flex flex-col min-w-40 !h-10 w-96">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#9f9eb7] flex border-none bg-[#2a2938] items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-gray-400" style="font-size: 24px; font-variation-settings: 'FILL' 0;">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border-none bg-[#2a2938] focus:border-none h-full placeholder:text-[#9f9eb7] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search for courses, achievements..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-4">
+<div class="flex gap-2">
+<button class="relative flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 w-10 bg-[#2a2938] text-white">
+<span class="material-symbols-outlined text-white" style="font-size: 20px; font-variation-settings: 'FILL' 0;">notifications</span>
+<div class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-[#2a2938]"></div>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 w-10 bg-[#2a2938] text-white">
+<span class="material-symbols-outlined text-white" style="font-size: 20px; font-variation-settings: 'FILL' 0;">chat_bubble</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuASWBuTFBN0JJoklfcnBu7dKTePl_NwPySxpr7I7WzHVDrZACF0iHzFvU3u-Ct5HsoPaZkMtkzer93RhP456Uv6QlYT8Ai5ABVW7Ua9mWwdNW0nPkFVtofXVdNai8CUZAlXGP5oxWla8ZmON89xu-U1Up9i55VWZYvUwpkhk4xxnO5FWFiOUicUDRE6fx2dKPFxJRZMNvUs9ek-HDfLYcSkocbnP37pGglnkkLK0qZYtWuL-LFt0qFVZTqKZzhp_Bk0Bu4IPlblkBU");'></div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 overflow-y-auto p-10">
+<!-- PageHeading -->
+<div class="flex flex-wrap justify-between gap-3">
+<div class="flex min-w-72 flex-col gap-3">
+<p class="text-white text-4xl font-black leading-tight tracking-[-0.033em]">Your Achievements</p>
+<p class="text-[#9f9eb7] text-base font-normal leading-normal">Unlock badges and celebrate your learning milestones.</p>
+</div>
+</div>
+<!-- ProgressBar -->
+<div class="flex flex-col gap-3 p-4 my-6 bg-[#1e1e2e] rounded-xl">
+<div class="flex gap-6 justify-between items-center">
+<p class="text-white text-base font-medium leading-normal">Overall Progress</p>
+<p class="text-white text-sm font-bold leading-normal">30%</p>
+</div>
+<div class="rounded-full bg-[#3e3d52] h-2.5">
+<div class="h-2.5 rounded-full bg-primary" style="width: 30%;"></div>
+</div>
+<p class="text-[#9f9eb7] text-sm font-normal leading-normal">15 / 50 Badges Unlocked</p>
+</div>
+<!-- ImageGrid adapted for Achievements -->
+<div class="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-6">
+<!-- Unlocked Badge Example -->
+<div class="flex flex-col items-center p-4 bg-[#2a2938] rounded-xl border border-transparent hover:border-primary transition-all duration-300 transform hover:-translate-y-1">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-28" data-alt="Daily Striker Badge" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBZ15BO3N4IsuMxBlAL3M3iRZdWBdJeFlS3TpUUQvLxPPoG_AVfUanmIMZ06cW_0P2qsahqgle_p-SRBUpM5slauFv4-27G6eR6C952faJZYJBTyK3y3HIPZ6I8r7B2Z_P2T0eYDeQRp3aw76O07G58iAP-QvGd9MF7uKyw4kfNVFu8FIj5TA9ogItN3AU_xuryDtzHrAdbFEnzkntRF_nMiQPsVmss9j-8tUBNw9SY-kJEU3r0cnj3ytGRYNHmo7uWSyKLbFlb7qY");'></div>
+<p class="text-white text-lg font-bold leading-tight mt-4 text-center">Daily Striker</p>
+<p class="text-[#9f9eb7] text-sm font-normal leading-normal text-center mt-1">Studied 5 days in a row.</p>
+</div>
+<div class="flex flex-col items-center p-4 bg-[#2a2938] rounded-xl border border-transparent hover:border-primary transition-all duration-300 transform hover:-translate-y-1">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-28" data-alt="First Step Badge" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAnwYM-wmL7-TdyEtRPtJcK0WWsbaZqhrVoOz8O1T8yTbX_QO4zU0Wx_PP8SH_BcnRYbjTdAhKQZW2ae5L4NSBHxd_l-AGMvoDf7oAJJlxAXFjSvamHbuKvSXHh7lVNi39XEOezxI35ycFMb3xVL_yLkZ8l6rBYbIKN6IIpfgXyj8xVfI01YBUW_meXbcmSpEBm9kSJK1RZG98KkO0yHahK2x9Hatll-RcMmk3zQYOmVhOfv296BDtpxXF0g6QuvyiYZ0IQhsCKJQc");'></div>
+<p class="text-white text-lg font-bold leading-tight mt-4 text-center">First Step</p>
+<p class="text-[#9f9eb7] text-sm font-normal leading-normal text-center mt-1">Completed your first lesson.</p>
+</div>
+<div class="flex flex-col items-center p-4 bg-[#2a2938] rounded-xl border border-transparent hover:border-primary transition-all duration-300 transform hover:-translate-y-1">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-28" data-alt="Weekend Warrior Badge" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAeWXO4BDbvBbqYOy8zCESHo_hyAa-EfCaogw7yW8Vwo1fbs5hF9Zpgmi8DdsgNeb6cS7-S8l81rjpJerfezkJocTXw6nykgJvxvozgUPKG-ibeiNHzgz4vSFwqDboxfq5kgcqZhF9FdSbU3e1aaBeDeQ2yHPl1GwMzQGbaVSIWIPGq26M8gT5zXGKr6e2dGssogrzZBcjhF73sxfKZIrhFFWsMoBq11ahV8fwAgRb2j09VIpkrl67Qa8-fSrVC5ylw7KnxnjY346M");'></div>
+<p class="text-white text-lg font-bold leading-tight mt-4 text-center">Weekend Warrior</p>
+<p class="text-[#9f9eb7] text-sm font-normal leading-normal text-center mt-1">Studied on a Saturday.</p>
+</div>
+<div class="flex flex-col items-center p-4 bg-[#2a2938] rounded-xl border border-transparent hover:border-primary transition-all duration-300 transform hover:-translate-y-1">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-28" data-alt="Perfect Score Badge" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAj_y_GmIj2PSlR0floOwVvO0uxR9k9YX1Zpn_OALE_0hKr3xD6P8-zy_wGAGYH8Ez-l4kzO9Qw4Hip2ZHYqp4m0JzNdJcRpnCBVuJ-PSCc6TXdednxKv-ls1q7MSI2X_K_QOQxy72nQ2gjdQbx5XwPzEpeltnNm8af0tHYPZoH__o1l5PF-4yhB_9GzhTj4WQ6CXf3S0HgO-1Ka46DWN9ebiU6bIHb214NHFUrPTPL1QfF3EjgMLo5lgD5TgP7SgIVppIkfz8u9Vg");'></div>
+<p class="text-white text-lg font-bold leading-tight mt-4 text-center">Perfect Score</p>
+<p class="text-[#9f9eb7] text-sm font-normal leading-normal text-center mt-1">Got 100% on a quiz.</p>
+</div>
+<div class="flex flex-col items-center p-4 bg-[#2a2938] rounded-xl border border-transparent hover:border-primary transition-all duration-300 transform hover:-translate-y-1">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-28" data-alt="Course Completer Badge" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBoiOP2HX6i_tsxBq-su1IlI1lC0NUonHh2lNfogJ3z3XbtJ7EU0NNhrcVBYPKVfyuuuQbR2H1EGULzl8L9GYIzuVwmpIKMMdVjqlL1fQI4dXuvfHQbHz5njJnDChL3USnP7Si4UDTOguG7QYxdJnTyOOB9RefJ8sg24gHYOdn9Lo-wCepanpMg7Z_6gk4se9SUWeIX-FNEE68AYXMzKI2xW39uoZ-O_6HfZ-azaJaqFaF5qiY9RDLbEypTiSND65fDXEzKude_pnk");'></div>
+<p class="text-white text-lg font-bold leading-tight mt-4 text-center">Course Completer</p>
+<p class="text-[#9f9eb7] text-sm font-normal leading-normal text-center mt-1">Finished a full course.</p>
+</div>
+<!-- Locked Badge Example -->
+<div class="flex flex-col items-center p-4 bg-[#2a2938] rounded-xl relative opacity-60">
+<div class="absolute inset-0 bg-black/50 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-5xl">lock</span>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-28 filter grayscale" data-alt="Locked Badge" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCs-5e4HFqtg83Svvw-7ylYiGTH9Ej4EeJVloyRx2bSV0yYn2d9JLMOsmLR9QBeo-h5Lh7MEmGzPZoVm7JEllX8ZtWs0b3ETF66q_4OYzqFCGtzeEFJVpUCJ8b7_P2s7yk7k8w1MiFMDejDvaEmMu0sWDOr4uSHaGDidguZ7ruVK1pfxTeNpMekouG3bDSWDkgvfY5sCOBE_HYF3kXxcrG6Xm4pRR8ESu9--7NQP3iJz55pMTSASoegUuOWJaI4eKyYPPd0LcGHGK4");'></div>
+<p class="text-white text-lg font-bold leading-tight mt-4 text-center">Master Learner</p>
+<p class="text-[#9f9eb7] text-sm font-normal leading-normal text-center mt-1">Complete 10 courses.</p>
+</div>
+<div class="flex flex-col items-center p-4 bg-[#2a2938] rounded-xl relative opacity-60">
+<div class="absolute inset-0 bg-black/50 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-5xl">lock</span>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-28 filter grayscale" data-alt="Locked Badge" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCxMvZTgdiQ68nTSkJEaakK6YlgYpJgjorQoafABNOjiDM2HY3zQunjdbZXXIzQ5zZST2QxhwSFJaPRbzusN1PjnIzDNytpUnz6CK_Ea6i566nFRJeKEGYs79XnREBV33t6eYKBPK5_yVhBy5xqN08_JDn_2nXU_yboXMjMN4aMrBgrPj12WqJ0o1Hb-7FFUZAxwhLKhqiZhrewarxiWklqPX6eRkUThyeP5xA4hUuyH-JwP5Bk0c-yLHTt3cuW27UDrcmbJXKMwGM");'></div>
+<p class="text-white text-lg font-bold leading-tight mt-4 text-center">Social Butterfly</p>
+<p class="text-[#9f9eb7] text-sm font-normal leading-normal text-center mt-1">Comment on 5 discussions.</p>
+</div>
+<div class="flex flex-col items-center p-4 bg-[#2a2938] rounded-xl relative opacity-60">
+<div class="absolute inset-0 bg-black/50 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-5xl">lock</span>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-28 filter grayscale" data-alt="Locked Badge" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBwCT1MyRmBeRlrDljlKpvxbe0nZVboTcrY-P9ReWO-AMss4wGfzkYHbtAE3OWcfl8opZVFZgqRX2seNk7IPuNwHGgdxvYf36drE3IDAf1QYcGEpEMuJtxVRxzlDXXAJBL3f9xRR2PD2fvcOjLoDSkmxa-RMNQDVurl1yoQ9KYkRQLOwZmz4FkvnpuCZUFFA2-avfP0HZMGb7GnuSDtJ5UrvAnUQmp62-a_cihBvmOtzYV2blWmOOR4g6TGwOGMceO6W_K0FVtkvko");'></div>
+<p class="text-white text-lg font-bold leading-tight mt-4 text-center">Night Owl</p>
+<p class="text-[#9f9eb7] text-sm font-normal leading-normal text-center mt-1">Study after 10 PM.</p>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StudyFlow Desktop Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5048e5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#121121",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<div class="flex h-full flex-1">
+<!-- SideNavBar -->
+<aside class="flex h-full min-h-screen w-64 flex-col justify-between border-r border-slate-200/10 bg-background-light dark:bg-background-dark p-4">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3 px-3 py-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="StudyFlow application logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB7HBZc76F7rXCJqe2my1xxa7z6KR2Wbtuoqh6gCwhxsggiWbRtQNk5ts6Iq6ZT9pgsTbcey4YktJ0WNPcmBaePtPZgZc1dFPFNrSArJj9G7-cWQ9F87eJ_S716saBU3hvm3rLgFgWvB6DUUFU0AIdgbV15n4dInDb8sSZanZeRCZxXp8GhxeXDkgFd4eLGTMAutRYfyVVZkwD_jBw_PPCuKSHlBha2_5QKodhZdnOpYudBdwFHQptwE-cPYYrRTUdOMmiL4ic4lLk");'></div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-base font-medium leading-normal">StudyFlow</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Smart Learning</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2 mt-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50" href="#">
+<span class="material-symbols-outlined">layers</span>
+<p class="text-sm font-medium leading-normal">Decks</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50" href="#">
+<span class="material-symbols-outlined">emoji_events</span>
+<p class="text-sm font-medium leading-normal">Achievements</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 text-primary" href="#">
+<span class="material-symbols-outlined fill">person</span>
+<p class="text-sm font-medium leading-normal">Profile</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium leading-normal">Settings</p>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50" href="#">
+<span class="material-symbols-outlined">logout</span>
+<p class="text-sm font-medium leading-normal">Log out</p>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex-col">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200/10 px-10 py-3">
+<div class="flex items-center gap-8">
+<label class="flex flex-col min-w-40 !h-10 w-80">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-slate-500 dark:text-slate-400 flex border-none bg-slate-100 dark:bg-slate-800/50 items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-slate-100 dark:bg-slate-800/50 focus:border-none h-full placeholder:text-slate-500 dark:placeholder:text-slate-400 px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search decks, cards..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-4">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800/50 text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800/50 text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar for Jordan Smith" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB93m1aSUbkfdmRBnXt6jdX-W72OBuFvRn1sxtCF8_DTLA3FijtgFfO6TGf7IApjxos4gExUY4JwEBbbjTbfso6o3fEFi4qXalxammbqGtuv62CjH3YH6IA9giZOVfQ61qI_bN0JSGW7gey1Om-N2ds0rQ7yNt26gx2FhAn-ae8oMXx7hSJmNol-ZUztXIjpkWBzMc3OGik5ey1e4ig5swzrdTvPU32xRpkI-JI8nismOldD2fpyBDcdlh3Itgf27zI4ELZM4C4zXo");'></div>
+</div>
+</header>
+<!-- Profile Content Area -->
+<div class="p-10 overflow-y-auto">
+<!-- ProfileHeader -->
+<div class="flex p-4 @container">
+<div class="flex w-full flex-col gap-4 @[520px]:flex-row @[520px]:justify-between @[520px]:items-center">
+<div class="flex items-center gap-6">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32 ring-4 ring-primary/30" data-alt="User avatar for Jordan Smith" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC-2ON3zcVAmv1FT6YGSvUB7JRaxBAR3n6plaalsWsLbCYDdIGn8sEGOB67f8CNV3aD4qn6v1p1BLiIfvnmrIUFQ5rulYUSNXBDGwcDeDsLGdWxJg7pya8UHQNx78xMF8yz5UM39PXrt0-T1AsynWdPcG-tP29_F6lOhWp2WaX9nF-BaKx6ls2nQGlEYjOc2DetqVpNRA08xI7KWtFyBoxJI_oituq40ppWh0SOA-fZlyf-Xipdz6kBcOFXaQwZsuJJ8VSiZ7ZiCJQ");'></div>
+<div class="flex flex-col justify-center">
+<h1 class="text-slate-900 dark:text-white text-3xl font-bold leading-tight tracking-[-0.015em]">Jordan Smith</h1>
+<p class="text-slate-500 dark:text-slate-400 text-base font-normal leading-normal mt-1">Joined January 2024</p>
+</div>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] w-full max-w-[480px] @[480px]:w-auto">
+<span class="truncate">Edit Profile</span>
+</button>
+</div>
+</div>
+<!-- Stats -->
+<div class="flex flex-wrap gap-4 p-4">
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 bg-slate-100 dark:bg-slate-800/50">
+<p class="text-slate-700 dark:text-slate-300 text-base font-medium leading-normal">Study Points</p>
+<p class="text-primary tracking-light text-3xl font-bold leading-tight">12,840</p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 bg-slate-100 dark:bg-slate-800/50">
+<p class="text-slate-700 dark:text-slate-300 text-base font-medium leading-normal">Flashcards Studied</p>
+<p class="text-slate-900 dark:text-white tracking-light text-3xl font-bold leading-tight">1,532</p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 bg-slate-100 dark:bg-slate-800/50">
+<p class="text-slate-700 dark:text-slate-300 text-base font-medium leading-normal">Current Streak</p>
+<p class="text-slate-900 dark:text-white tracking-light text-3xl font-bold leading-tight">42 Days</p>
+</div>
+</div>
+<!-- SectionHeader: Badges -->
+<div class="flex items-center justify-between px-4 pb-3 pt-5">
+<h2 class="text-slate-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em]">Recent Badges</h2>
+<a class="text-sm font-medium text-primary hover:underline" href="#">View All</a>
+</div>
+<!-- Badges Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 p-4">
+<div class="flex flex-col items-center text-center gap-2 p-4 rounded-xl bg-slate-100 dark:bg-slate-800/50">
+<span class="material-symbols-outlined text-yellow-400 text-5xl">military_tech</span>
+<p class="text-sm font-medium text-slate-700 dark:text-slate-300">Quick Learner</p>
+</div>
+<div class="flex flex-col items-center text-center gap-2 p-4 rounded-xl bg-slate-100 dark:bg-slate-800/50">
+<span class="material-symbols-outlined text-orange-500 text-5xl">local_fire_department</span>
+<p class="text-sm font-medium text-slate-700 dark:text-slate-300">30 Day Streak</p>
+</div>
+<div class="flex flex-col items-center text-center gap-2 p-4 rounded-xl bg-slate-100 dark:bg-slate-800/50">
+<span class="material-symbols-outlined text-blue-400 text-5xl">school</span>
+<p class="text-sm font-medium text-slate-700 dark:text-slate-300">Deck Master</p>
+</div>
+<div class="flex flex-col items-center text-center gap-2 p-4 rounded-xl bg-slate-100 dark:bg-slate-800/50">
+<span class="material-symbols-outlined text-green-400 text-5xl">psychology</span>
+<p class="text-sm font-medium text-slate-700 dark:text-slate-300">Mind Explorer</p>
+</div>
+<div class="flex flex-col items-center text-center gap-2 p-4 rounded-xl bg-slate-100 dark:bg-slate-800/50 opacity-40">
+<span class="material-symbols-outlined text-slate-400 text-5xl">brightness_5</span>
+<p class="text-sm font-medium text-slate-500">Early Bird</p>
+</div>
+<div class="flex flex-col items-center text-center gap-2 p-4 rounded-xl bg-slate-100 dark:bg-slate-800/50 opacity-40">
+<span class="material-symbols-outlined text-slate-400 text-5xl">rocket_launch</span>
+<p class="text-sm font-medium text-slate-500">Fast Starter</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

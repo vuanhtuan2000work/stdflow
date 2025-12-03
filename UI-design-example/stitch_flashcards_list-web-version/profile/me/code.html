@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StudyFlow Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+      font-size: 24px;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#4A90E2",
+            "accent": "#F5A623",
+            "background-light": "#F8F9FA",
+            "background-dark": "#121121",
+            "text-light-primary": "#333333",
+            "text-light-secondary": "#888888",
+            "text-dark-primary": "#FFFFFF",
+            "text-dark-secondary": "#9795c6",
+            "border-light": "#E0E0E0",
+            "border-dark": "#383663",
+            "card-light": "#FFFFFF",
+            "card-dark": "#1a192c",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "0.75rem",
+            "xl": "1rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative mx-auto flex h-auto min-h-screen w-full max-w-md flex-col overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="flex items-center p-4 pb-2 justify-between sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="flex size-10 shrink-0 items-center justify-center text-text-light-primary dark:text-text-dark-primary">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</div>
+<h1 class="text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center text-text-light-primary dark:text-text-dark-primary">Profile</h1>
+<div class="flex size-10 shrink-0 items-center justify-center"></div>
+</div>
+<!-- Profile Header -->
+<div class="flex p-4 pt-6 @container">
+<div class="flex w-full flex-col gap-4 items-center">
+<div class="flex gap-4 flex-col items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-28 w-28 border-4 border-primary" data-alt="User avatar placeholder image with an abstract colorful gradient" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA59_3V10v0eZ_9mmRNtPdoC62P9pQxb2u3AAwm1z54R86kt7r0Os-Az8Ugun2aJR0cl_M4t4C0iF1RA2NcCWTZVE-02fCWSblwM0WqMHBtZg7iUQFNYAwzu3uAzIcroo5QjkGYKP88fJCFIXYl9dMqE-HJwAYWbYOUvRnr-nKwtOWmuSpvwe58_cYhQbFNidv_bNyBNVyngXUYWYeR0HbI-w-LGIklg92lwbfch70e03yai3-Iy-Bz9Uiib26ajvyPxUne8RysgKM");'></div>
+<div class="flex flex-col items-center justify-center">
+<p class="text-text-light-primary dark:text-text-dark-primary text-[22px] font-bold leading-tight tracking-[-0.015em] text-center">Alex Taylor</p>
+<p class="text-text-light-secondary dark:text-text-dark-secondary text-base font-normal leading-normal text-center">@alextaylor</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Stats -->
+<div class="flex flex-wrap gap-4 p-4">
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-4 bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-accent text-lg">local_fire_department</span>
+<p class="text-text-light-secondary dark:text-text-dark-secondary text-sm font-medium leading-normal">Current Streak</p>
+</div>
+<p class="text-text-light-primary dark:text-text-dark-primary tracking-tight text-3xl font-bold leading-tight">12 <span class="text-base font-medium text-text-light-secondary dark:text-text-dark-secondary">days</span></p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-4 bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">timer</span>
+<p class="text-text-light-secondary dark:text-text-dark-secondary text-sm font-medium leading-normal">Total Hours</p>
+</div>
+<p class="text-text-light-primary dark:text-text-dark-primary tracking-tight text-3xl font-bold leading-tight">158 <span class="text-base font-medium text-text-light-secondary dark:text-text-dark-secondary">hrs</span></p>
+</div>
+<div class="flex min-w-full flex-1 flex-col gap-2 rounded-xl p-4 bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-green-500 text-lg">school</span>
+<p class="text-text-light-secondary dark:text-text-dark-secondary text-sm font-medium leading-normal">Courses Completed</p>
+</div>
+<p class="text-text-light-primary dark:text-text-dark-primary tracking-tight text-3xl font-bold leading-tight">8 <span class="text-base font-medium text-text-light-secondary dark:text-text-dark-secondary">courses</span></p>
+</div>
+</div>
+<!-- Account Settings Section -->
+<div class="px-4">
+<div class="bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark overflow-hidden">
+<h3 class="text-text-light-primary dark:text-text-dark-primary text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Account</h3>
+<!-- List Item -->
+<div class="flex items-center gap-4 px-4 min-h-14 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-text-light-primary dark:text-text-dark-primary flex items-center justify-center rounded-lg bg-primary/20 shrink-0 size-10">
+<span class="material-symbols-outlined">person</span>
+</div>
+<p class="text-text-light-primary dark:text-text-dark-primary text-base font-normal leading-normal flex-1 truncate">Personal Information</p>
+</div>
+<div class="shrink-0">
+<div class="text-text-light-secondary dark:text-text-dark-secondary flex size-7 items-center justify-center">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</div>
+<div class="pl-16 pr-4">
+<hr class="border-border-light dark:border-border-dark"/>
+</div>
+<!-- List Item -->
+<div class="flex items-center gap-4 px-4 min-h-14 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-text-light-primary dark:text-text-dark-primary flex items-center justify-center rounded-lg bg-primary/20 shrink-0 size-10">
+<span class="material-symbols-outlined">workspace_premium</span>
+</div>
+<p class="text-text-light-primary dark:text-text-dark-primary text-base font-normal leading-normal flex-1 truncate">Manage Subscription</p>
+</div>
+<div class="shrink-0">
+<div class="text-text-light-secondary dark:text-text-dark-secondary flex size-7 items-center justify-center">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Study Preferences Section -->
+<div class="px-4 mt-4">
+<div class="bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark overflow-hidden">
+<h3 class="text-text-light-primary dark:text-text-dark-primary text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Preferences</h3>
+<!-- List Item -->
+<div class="flex items-center gap-4 px-4 min-h-14 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-text-light-primary dark:text-text-dark-primary flex items-center justify-center rounded-lg bg-primary/20 shrink-0 size-10">
+<span class="material-symbols-outlined">flag</span>
+</div>
+<p class="text-text-light-primary dark:text-text-dark-primary text-base font-normal leading-normal flex-1 truncate">Study Goals</p>
+</div>
+<div class="shrink-0">
+<div class="text-text-light-secondary dark:text-text-dark-secondary flex size-7 items-center justify-center">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</div>
+<div class="pl-16 pr-4">
+<hr class="border-border-light dark:border-border-dark"/>
+</div>
+<!-- List Item -->
+<div class="flex items-center gap-4 px-4 min-h-14 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-text-light-primary dark:text-text-dark-primary flex items-center justify-center rounded-lg bg-primary/20 shrink-0 size-10">
+<span class="material-symbols-outlined">notifications</span>
+</div>
+<p class="text-text-light-primary dark:text-text-dark-primary text-base font-normal leading-normal flex-1 truncate">Notifications</p>
+</div>
+<div class="shrink-0">
+<div class="text-text-light-secondary dark:text-text-dark-secondary flex size-7 items-center justify-center">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</div>
+<div class="pl-16 pr-4">
+<hr class="border-border-light dark:border-border-dark"/>
+</div>
+<!-- List Item -->
+<div class="flex items-center gap-4 px-4 min-h-14 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-text-light-primary dark:text-text-dark-primary flex items-center justify-center rounded-lg bg-primary/20 shrink-0 size-10">
+<span class="material-symbols-outlined">dark_mode</span>
+</div>
+<p class="text-text-light-primary dark:text-text-dark-primary text-base font-normal leading-normal flex-1 truncate">Appearance</p>
+</div>
+<div class="shrink-0">
+<label class="relative inline-flex cursor-pointer items-center" for="dark-mode-toggle">
+<input checked="" class="peer sr-only" id="dark-mode-toggle" type="checkbox" value=""/>
+<div class="peer h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white rtl:peer-checked:after:-translate-x-full dark:border-gray-600 dark:bg-gray-700"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Support Section -->
+<div class="px-4 mt-4 pb-8">
+<div class="bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark overflow-hidden">
+<!-- List Item -->
+<div class="flex items-center gap-4 px-4 min-h-14 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-text-light-primary dark:text-text-dark-primary flex items-center justify-center rounded-lg bg-primary/20 shrink-0 size-10">
+<span class="material-symbols-outlined">help</span>
+</div>
+<p class="text-text-light-primary dark:text-text-dark-primary text-base font-normal leading-normal flex-1 truncate">Help Center</p>
+</div>
+<div class="shrink-0">
+<div class="text-text-light-secondary dark:text-text-dark-secondary flex size-7 items-center justify-center">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</div>
+<div class="pl-16 pr-4">
+<hr class="border-border-light dark:border-border-dark"/>
+</div>
+<!-- List Item -->
+<div class="flex items-center gap-4 px-4 min-h-14 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-red-500 flex items-center justify-center rounded-lg bg-red-500/20 shrink-0 size-10">
+<span class="material-symbols-outlined">logout</span>
+</div>
+<p class="text-red-500 text-base font-medium leading-normal flex-1 truncate">Log Out</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

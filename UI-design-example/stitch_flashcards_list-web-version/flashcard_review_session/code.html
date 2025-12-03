@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Flashcard Review Session</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5048e5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#121121",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display">
+<div class="relative flex h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-hidden">
+<!-- Top App Bar -->
+<div class="flex items-center p-4 pb-2 justify-between bg-background-light dark:bg-background-dark">
+<div class="flex size-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-zinc-500 dark:text-zinc-400" style="font-size: 24px;">arrow_back_ios_new</span>
+</div>
+<h2 class="text-zinc-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Science Review</h2>
+<div class="flex size-10 shrink-0 items-center justify-center"></div> <!-- Spacer for centering title -->
+</div>
+<!-- Progress Bar -->
+<div class="flex flex-col gap-2 px-4 py-2">
+<div class="flex gap-4 justify-between items-center">
+<p class="text-zinc-600 dark:text-zinc-400 text-sm font-medium leading-normal">Session Progress</p>
+<p class="text-zinc-500 dark:text-zinc-400 text-sm font-normal leading-normal">7 / 20</p>
+</div>
+<div class="rounded-full bg-zinc-200 dark:bg-zinc-700 h-2">
+<div class="h-2 rounded-full bg-primary" style="width: 35%;"></div>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="flex flex-col flex-1 px-4 py-6 justify-center">
+<!-- Card -->
+<div class="@container flex-grow flex items-center justify-center">
+<div class="flex flex-col w-full h-full max-h-[500px] items-stretch justify-center rounded-xl shadow-lg bg-white dark:bg-[#1C1B32] p-6">
+<p class="text-center text-2xl font-bold leading-tight tracking-[-0.015em] text-zinc-900 dark:text-white">What is the powerhouse of the cell?</p>
+</div>
+</div>
+<!-- Meta Text -->
+<div class="flex-shrink-0">
+<p class="text-zinc-500 dark:text-zinc-400 text-sm font-normal leading-normal py-4 text-center">Tap card to show answer</p>
+</div>
+</div>
+<!-- Button Group -->
+<div class="flex justify-stretch p-4 pt-0">
+<div class="flex w-full flex-1 gap-3 flex-wrap justify-between">
+<button class="flex flex-1 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-5 bg-orange-500/10 dark:bg-orange-500/20 text-orange-500 text-base font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Difficult</span>
+</button>
+<button class="flex flex-1 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-5 bg-yellow-500/10 dark:bg-yellow-500/20 text-yellow-500 text-base font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Medium</span>
+</button>
+<button class="flex flex-1 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-5 bg-green-500/10 dark:bg-green-500/20 text-green-500 text-base font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Easy</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

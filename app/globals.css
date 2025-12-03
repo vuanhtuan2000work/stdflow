@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Design tokens from flow-design-spec.pdf */
+    --font-inter: 'Inter', system-ui, sans-serif;
+  }
+
+  * {
+    @apply border-gray-200;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900 font-sans antialiased;
+    font-family: var(--font-inter);
+  }
+
+  /* Typography defaults */
+  h1 {
+    @apply text-h1-mobile lg:text-h1-desktop font-bold;
+  }
+
+  h2 {
+    @apply text-h2-mobile lg:text-h2-desktop font-semibold;
+  }
+
+  h3 {
+    @apply text-h3-mobile lg:text-h3-desktop font-semibold;
+  }
+
+  /* Safe area for mobile bottom nav */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+@layer utilities {
+  /* Custom utilities if needed */
+}

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StudyFlow Desktop Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#5048e5",
+              "background-light": "#f6f6f8",
+              "background-dark": "#121117",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<div class="flex h-full w-full">
+<!-- SideNavBar -->
+<nav class="flex h-auto min-h-screen w-64 flex-col justify-between border-r border-slate-200/10 bg-white dark:bg-[#191823] p-4">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-4 text-white px-3 py-2">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_535)">
+<path clip-rule="evenodd" d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z" fill="currentColor" fill-rule="evenodd"></path>
+</g>
+<defs>
+<clippath id="clip0_6_535"><rect fill="white" height="48" width="48"></rect></clippath>
+</defs>
+</svg>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">StudyFlow</h2>
+</div>
+<div class="flex flex-col gap-2 pt-4">
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800" href="#">
+<span class="material-symbols-outlined text-lg">grid_view</span>
+<p class="text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800" href="#">
+<span class="material-symbols-outlined text-lg">book</span>
+<p class="text-sm font-medium leading-normal">Courses</p>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800" href="#">
+<span class="material-symbols-outlined text-lg">trending_up</span>
+<p class="text-sm font-medium leading-normal">Progress</p>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800" href="#">
+<span class="material-symbols-outlined text-lg">group</span>
+<p class="text-sm font-medium leading-normal">Community</p>
+</a>
+<a class="flex items-center gap-3 rounded-lg bg-primary/10 px-3 py-2 text-primary dark:bg-primary/20" href="#">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">settings</span>
+<p class="text-sm font-medium leading-normal">Settings</p>
+</a>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-1 border-t border-slate-200/10 pt-4">
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800" href="#">
+<span class="material-symbols-outlined text-lg">help_center</span>
+<p class="text-sm font-medium leading-normal">Help Center</p>
+</a>
+</div>
+<div class="flex gap-3 border-t border-slate-200/10 pt-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar of Alex Doe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAz3EMWGaOSQ5Z0d41ZZUw6EkY33R09kTn7rmZvSstm2AbmfbVkUUDQRjtUKIfXzswOMf3IbyfYA9AAJk9XtF4dlHN_A2KZBQvo1lpqTNE-ermpv8N-YAXfPH7xXwaR3zEs9VSbU8Dpp7UR57UwZcC6c41D5M3MhdEbu8vFLc0_Alu3dAnXFwsgohVC8k0sonNzYiK94eDICfTeNFwAc05tBIBsQv5_Mfb1KXPKlPsh5cKas6A7gpPS7B1ih7dl76JIzNRhqfiODkE");'></div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-base font-medium leading-normal">Alex Doe</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">alex.doe@email.com</p>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200/10 bg-white/50 dark:bg-[#191823]/50 backdrop-blur-sm px-10 py-3 sticky top-0 z-10">
+<div class="flex items-center gap-8">
+<label class="flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-slate-500 dark:text-slate-400 flex border border-r-0 border-slate-200/10 bg-slate-100 dark:bg-[#2a2938] items-center justify-center pl-4 rounded-l-lg">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-l-0 border-slate-200/10 bg-slate-100 dark:bg-[#2a2938] h-full placeholder:text-slate-500 dark:placeholder:text-slate-400 px-4 pl-2 text-base font-normal leading-normal" placeholder="Search" value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-4">
+<div class="flex gap-2">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 w-10 bg-slate-100 dark:bg-[#2a2938] text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700/50">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 w-10 bg-slate-100 dark:bg-[#2a2938] text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700/50">
+<span class="material-symbols-outlined text-xl">dark_mode</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar of Alex Doe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAaGlk3vT9BWF_ZjYhpyLgJ8b1XrAHEDSKSu2tO5xvehZLrOO0Uvfa9_cjwlQMLaSdK3CVR_7D4q494o16VoyfnABMI8qaGQqtGHFLbmOy_s6W_yNQeaLZi3e3mr9n4AhWJ-3hrcM7yAqy5l-hVrqm0DzG3dkHRx0KKTG3TvWHCf8BWeRNTpWFkMdeZjY1Zbl_YIjzqigF3tIxv-cxHsChV5DZE7d4NRRB4hBVwNwhSys-OTJcwUr_nmQ8hlxpquTr9e1zCaoMifC8");'></div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="flex-1 p-10">
+<!-- PageHeading -->
+<div class="flex flex-wrap justify-between gap-3 mb-8">
+<div class="flex min-w-72 flex-col gap-2">
+<p class="text-slate-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Settings</p>
+<p class="text-slate-500 dark:text-slate-400 text-base font-normal leading-normal">Manage your account and preferences</p>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-10">
+<!-- Settings Navigation -->
+<div class="lg:w-1/4">
+<div class="flex flex-col gap-1">
+<!-- Active ListItem -->
+<a class="flex items-center gap-4 bg-slate-100 dark:bg-primary/20 rounded-lg px-4 min-h-14 justify-between" href="#">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center shrink-0 size-10">
+<span class="material-symbols-outlined">person</span>
+</div>
+<p class="text-primary text-base font-medium leading-normal flex-1 truncate">Account</p>
+</div>
+<div class="shrink-0">
+<div class="text-primary flex size-7 items-center justify-center">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</a>
+<!-- Inactive ListItems -->
+<a class="flex items-center gap-4 px-4 min-h-14 justify-between rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800/50" href="#">
+<div class="flex items-center gap-4">
+<div class="text-slate-500 dark:text-slate-400 flex items-center justify-center shrink-0 size-10">
+<span class="material-symbols-outlined">notifications</span>
+</div>
+<p class="text-slate-700 dark:text-slate-300 text-base font-normal leading-normal flex-1 truncate">Notifications</p>
+</div>
+</a>
+<a class="flex items-center gap-4 px-4 min-h-14 justify-between rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800/50" href="#">
+<div class="flex items-center gap-4">
+<div class="text-slate-500 dark:text-slate-400 flex items-center justify-center shrink-0 size-10">
+<span class="material-symbols-outlined">visibility</span>
+</div>
+<p class="text-slate-700 dark:text-slate-300 text-base font-normal leading-normal flex-1 truncate">Appearance</p>
+</div>
+</a>
+<a class="flex items-center gap-4 px-4 min-h-14 justify-between rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800/50" href="#">
+<div class="flex items-center gap-4">
+<div class="text-slate-500 dark:text-slate-400 flex items-center justify-center shrink-0 size-10">
+<span class="material-symbols-outlined">lock</span>
+</div>
+<p class="text-slate-700 dark:text-slate-300 text-base font-normal leading-normal flex-1 truncate">Privacy</p>
+</div>
+</a>
+<a class="flex items-center gap-4 px-4 min-h-14 justify-between rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800/50" href="#">
+<div class="flex items-center gap-4">
+<div class="text-slate-500 dark:text-slate-400 flex items-center justify-center shrink-0 size-10">
+<span class="material-symbols-outlined">language</span>
+</div>
+<p class="text-slate-700 dark:text-slate-300 text-base font-normal leading-normal flex-1 truncate">Language</p>
+</div>
+</a>
+<a class="flex items-center gap-4 px-4 min-h-14 justify-between rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800/50" href="#">
+<div class="flex items-center gap-4">
+<div class="text-slate-500 dark:text-slate-400 flex items-center justify-center shrink-0 size-10">
+<span class="material-symbols-outlined">info</span>
+</div>
+<p class="text-slate-700 dark:text-slate-300 text-base font-normal leading-normal flex-1 truncate">About</p>
+</div>
+</a>
+</div>
+</div>
+<!-- Settings Details -->
+<div class="flex-1 lg:w-3/4">
+<div class="flex flex-col gap-8">
+<!-- Profile Information Section -->
+<div class="bg-white dark:bg-[#191823] rounded-xl border border-slate-200/10">
+<div class="p-6 border-b border-slate-200/10">
+<h3 class="text-lg font-semibold text-slate-900 dark:text-white">Profile Information</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Update your account's profile information and email address.</p>
+</div>
+<div class="p-6 flex flex-col gap-6">
+<div class="flex items-center gap-6">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-20" data-alt="User avatar of Alex Doe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBKpT6wvj13lZi7vmWJxyECTpoOHKAuN7H7WTpullxhm6C4gdO9RXMmpgNNRJyZo0sYg_40YZ50IJLE2pWeiAicqE8o_IyKQsI_7HO4b2Zd5O-dICj9T1QsB0LpnblI99oXNRW3w0zvC3aQra10jHuT77IKmeuyeM-5S1Z_jSCcGTuQ3t0L4CVA03KE7jD3ZztNUXfdqm_ihHpyr0s75YlTZrvs9wsbDQXk1YatU1nNXcaf8SNd-4eRUySRSnjtxmBLSc4VYaBUdVQ");'></div>
+<div class="flex gap-2">
+<button class="flex cursor-pointer items-center justify-center rounded-lg h-10 bg-primary text-white gap-2 text-sm font-bold min-w-0 px-4">Upload New</button>
+<button class="flex cursor-pointer items-center justify-center rounded-lg h-10 border border-slate-200/10 bg-transparent text-slate-700 dark:text-slate-300 gap-2 text-sm font-bold min-w-0 px-4 hover:bg-slate-100 dark:hover:bg-slate-800/50">Remove</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 block" for="fullName">Full Name</label>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-slate-200/10 bg-slate-100 dark:bg-[#2a2938] h-10 placeholder:text-slate-500 dark:placeholder:text-slate-400 px-4 text-base font-normal leading-normal" id="fullName" value="Alex Doe"/>
+</div>
+<div>
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 block" for="email">Email Address</label>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-slate-200/10 bg-slate-100 dark:bg-[#2a2938] h-10 placeholder:text-slate-500 dark:placeholder:text-slate-400 px-4 text-base font-normal leading-normal" id="email" type="email" value="alex.doe@email.com"/>
+</div>
+</div>
+</div>
+<div class="p-6 bg-slate-50 dark:bg-[#191823]/50 border-t border-slate-200/10 rounded-b-xl flex justify-end">
+<button class="flex cursor-pointer items-center justify-center rounded-lg h-10 bg-primary text-white gap-2 text-sm font-bold min-w-0 px-5">Save Changes</button>
+</div>
+</div>
+<!-- Password Management Section -->
+<div class="bg-white dark:bg-[#191823] rounded-xl border border-slate-200/10">
+<div class="p-6 border-b border-slate-200/10">
+<h3 class="text-lg font-semibold text-slate-900 dark:text-white">Password Management</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Update your password for better security.</p>
+</div>
+<div class="p-6 flex flex-col gap-4">
+<div>
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 block" for="currentPassword">Current Password</label>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-slate-200/10 bg-slate-100 dark:bg-[#2a2938] h-10 placeholder:text-slate-500 dark:placeholder:text-slate-400 px-4 text-base font-normal leading-normal" id="currentPassword" type="password" value="••••••••"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 block" for="newPassword">New Password</label>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-slate-200/10 bg-slate-100 dark:bg-[#2a2938] h-10 placeholder:text-slate-500 dark:placeholder:text-slate-400 px-4 text-base font-normal leading-normal" id="newPassword" type="password" value=""/>
+</div>
+<div>
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 block" for="confirmPassword">Confirm New Password</label>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-slate-200/10 bg-slate-100 dark:bg-[#2a2938] h-10 placeholder:text-slate-500 dark:placeholder:text-slate-400 px-4 text-base font-normal leading-normal" id="confirmPassword" type="password" value=""/>
+</div>
+</div>
+</div>
+<div class="p-6 bg-slate-50 dark:bg-[#191823]/50 border-t border-slate-200/10 rounded-b-xl flex justify-end">
+<button class="flex cursor-pointer items-center justify-center rounded-lg h-10 bg-primary text-white gap-2 text-sm font-bold min-w-0 px-5">Update Password</button>
+</div>
+</div>
+<!-- Delete Account Section -->
+<div class="bg-white dark:bg-[#191823] rounded-xl border border-red-500/30 dark:border-red-500/50">
+<div class="p-6 border-b border-red-500/30 dark:border-red-500/50">
+<h3 class="text-lg font-semibold text-red-600 dark:text-red-400">Delete Account</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Permanently delete your account. This action is irreversible.</p>
+</div>
+<div class="p-6 flex items-center justify-between">
+<p class="text-sm text-slate-600 dark:text-slate-300">Once you delete your account, there is no going back. Please be certain.</p>
+<button class="flex cursor-pointer items-center justify-center rounded-lg h-10 bg-red-600 hover:bg-red-700 text-white gap-2 text-sm font-bold min-w-0 px-5">Delete Account</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

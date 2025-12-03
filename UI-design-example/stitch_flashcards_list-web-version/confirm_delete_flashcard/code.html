@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Confirm Delete Flashcard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#5048e5",
+              "background-light": "#f6f6f8",
+              "background-dark": "#121121",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col items-center justify-end bg-background-light dark:bg-background-dark group/design-root overflow-hidden p-4 sm:justify-center">
+<!-- Background Overlay -->
+<div class="absolute inset-0 bg-black/50"></div>
+<!-- App Background Content (for context) -->
+<div class="absolute inset-0 w-full max-w-md mx-auto h-full flex flex-col blur-sm scale-95 opacity-80">
+<div class="w-full h-full bg-zinc-100 dark:bg-zinc-900 rounded-t-3xl p-4">
+<div class="h-10 w-full bg-zinc-200 dark:bg-zinc-800 rounded-lg mb-4"></div>
+<div class="h-40 w-full bg-zinc-200 dark:bg-zinc-800 rounded-lg mb-4"></div>
+<div class="h-6 w-3/4 bg-zinc-200 dark:bg-zinc-800 rounded-lg"></div>
+</div>
+</div>
+<!-- Modal Dialog -->
+<div class="relative w-full max-w-sm bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-2xl rounded-xl shadow-lg flex flex-col items-center p-2 pb-0">
+<!-- Icon -->
+<div class="flex h-14 w-14 items-center justify-center rounded-full bg-red-500/10 mt-4 mb-2">
+<span class="material-symbols-outlined text-3xl text-red-500">
+                    delete
+                </span>
+</div>
+<!-- HeadlineText -->
+<h1 class="text-zinc-900 dark:text-white tracking-tight text-xl font-bold leading-tight px-4 text-center pb-1 pt-3">Delete Flashcard?</h1>
+<!-- BodyText -->
+<p class="text-zinc-600 dark:text-zinc-400 text-sm font-normal leading-normal pb-6 pt-1 px-6 text-center">Are you sure you want to delete this flashcard? This action cannot be undone.</p>
+<!-- ButtonGroup -->
+<div class="flex w-full flex-col items-stretch border-t border-zinc-200 dark:border-zinc-700/50">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden h-12 px-5 text-red-500 text-base font-semibold leading-normal tracking-[0.015em] w-full transition-colors hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50">
+<span class="truncate">Delete</span>
+</button>
+<div class="w-full h-px bg-zinc-200 dark:bg-zinc-700/50"></div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden h-12 px-5 text-primary text-base font-bold leading-normal tracking-[0.015em] w-full transition-colors hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50">
+<span class="truncate">Cancel</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

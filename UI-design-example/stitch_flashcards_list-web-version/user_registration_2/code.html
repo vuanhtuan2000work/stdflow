@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Registration - StudyFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#5048e5",
+              "background-light": "#f6f6f8",
+              "background-dark": "#121121",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        font-size: 24px;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col items-center bg-background-light dark:bg-background-dark overflow-x-hidden p-4">
+<div class="flex w-full max-w-sm flex-col items-center pt-16">
+<div class="mb-8 text-center">
+<h2 class="font-bold text-2xl tracking-tight text-zinc-900 dark:text-white">StudyFlow</h2>
+</div>
+<h1 class="text-zinc-900 dark:text-white tracking-tight text-[32px] font-bold leading-tight px-4 text-center pb-3 pt-6">Create Your Account</h1>
+<p class="text-zinc-600 dark:text-zinc-400 text-base font-normal leading-normal pb-8 pt-1 px-4 text-center">Start your smart learning journey today.</p>
+<div class="w-full space-y-4">
+<div class="flex w-full flex-wrap items-end gap-4">
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-zinc-800 dark:text-white text-base font-medium leading-normal pb-2">Email Address</p>
+<div class="flex w-full flex-1 items-stretch rounded-lg">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-zinc-900 dark:text-white focus:outline-0 focus:ring-0 border border-zinc-300 dark:border-[#383663] bg-zinc-100 dark:bg-[#1c1b32] focus:border-primary dark:focus:border-primary h-14 placeholder:text-zinc-400 dark:placeholder:text-[#9795c6] p-[15px] text-base font-normal leading-normal" placeholder="Enter your email" value=""/>
+</div>
+</label>
+</div>
+<div class="flex w-full flex-wrap items-end gap-4">
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-zinc-800 dark:text-white text-base font-medium leading-normal pb-2">Password</p>
+<div class="flex w-full flex-1 items-stretch rounded-lg group">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-l-lg text-zinc-900 dark:text-white focus:outline-0 focus:ring-0 border border-zinc-300 dark:border-[#383663] bg-zinc-100 dark:bg-[#1c1b32] focus:border-primary dark:focus:border-primary h-14 placeholder:text-zinc-400 dark:placeholder:text-[#9795c6] p-[15px] border-r-0 text-base font-normal leading-normal" placeholder="8+ characters" type="password" value=""/>
+<div class="flex items-center justify-center rounded-r-lg border border-l-0 border-zinc-300 dark:border-[#383663] bg-zinc-100 dark:bg-[#1c1b32] pr-[15px] group-focus-within:border-primary dark:group-focus-within:border-primary">
+<span class="material-symbols-outlined text-zinc-500 dark:text-[#9795c6]">visibility</span>
+</div>
+</div>
+</label>
+</div>
+<div class="flex w-full flex-wrap items-end gap-4">
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-zinc-800 dark:text-white text-base font-medium leading-normal pb-2">Confirm Password</p>
+<div class="flex w-full flex-1 items-stretch rounded-lg group">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-l-lg text-zinc-900 dark:text-white focus:outline-0 focus:ring-0 border border-zinc-300 dark:border-[#383663] bg-zinc-100 dark:bg-[#1c1b32] focus:border-primary dark:focus:border-primary h-14 placeholder:text-zinc-400 dark:placeholder:text-[#9795c6] p-[15px] border-r-0 text-base font-normal leading-normal" placeholder="Re-enter your password" type="password" value=""/>
+<div class="flex items-center justify-center rounded-r-lg border border-l-0 border-zinc-300 dark:border-[#383663] bg-zinc-100 dark:bg-[#1c1b32] pr-[15px] group-focus-within:border-primary dark:group-focus-within:border-primary">
+<span class="material-symbols-outlined text-zinc-500 dark:text-[#9795c6]">visibility</span>
+</div>
+</div>
+</label>
+</div>
+</div>
+<button class="flex items-center justify-center text-center font-medium h-14 w-full rounded-lg bg-primary text-white text-base mt-8 hover:bg-opacity-90 transition-colors">
+                Sign Up
+            </button>
+<div class="relative flex items-center py-5">
+<div class="flex-grow border-t border-zinc-300 dark:border-zinc-700"></div>
+<span class="flex-shrink mx-4 text-zinc-500 dark:text-zinc-400 text-sm">Or</span>
+<div class="flex-grow border-t border-zinc-300 dark:border-zinc-700"></div>
+</div>
+<div class="w-full space-y-4">
+<button class="flex items-center justify-center text-center font-medium h-14 w-full rounded-lg bg-white dark:bg-[#1c1b32] border border-zinc-300 dark:border-[#383663] text-zinc-900 dark:text-white text-base hover:bg-zinc-50 dark:hover:bg-opacity-90 transition-colors">
+<svg class="mr-2" height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Google</title><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.85 3.18-1.73 4.1-1.02 1.08-2.58 1.98-4.52 1.98-5.45 0-9.88-4.45-9.88-9.88s4.43-9.88 9.88-9.88c2.92 0 4.86 1.16 6.02 2.28l2.47-2.47C19.64 2.89 16.47 1.2 12.48 1.2 5.88 1.2 1.2 5.88 1.2 12.48s4.68 11.28 11.28 11.28c3.2 0 5.96-1.12 7.92-3.12 2.02-2.02 2.64-5.04 2.64-8.12 0-.6-.05-1.18-.15-1.74h-10.8z" fill="#4285F4"></path></svg>
+                    Sign up with Google
+                </button>
+<button class="flex items-center justify-center text-center font-medium h-14 w-full rounded-lg bg-black text-white text-base hover:bg-opacity-90 transition-colors dark:bg-white dark:text-black">
+<svg class="mr-2" height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Apple</title><path d="M12.152 6.896c-.922 0-1.854.488-2.73.488-.879 0-1.862-.512-2.754-.512-.922 0-2.068.537-2.926 1.488-.797.902-1.312 2.227-1.312 3.527 0 2.832 1.633 4.543 2.96 5.46.82.586 1.632.926 2.73.926.878 0 1.66-.366 2.472-.366.813 0 1.61.39 2.484.39.922 0 2.068-.561 2.926-1.512.82-.926 1.312-2.227 1.312-3.527 0-2.316-1.39-3.402-2.812-3.402a2.33 2.33 0 0 0-2.266 1.244c-.634-1.074-1.633-1.684-2.754-1.684zm-1.02 11.33c-.634 0-1.22-.244-1.78-.732-.537-.512-1.049-1.317-1.415-2.22.415.146.854.293 1.337.293.585 0 1.268-.268 1.854-.268.585 0 1.244.268 1.83.268.488 0 .926-.147 1.337-.293-.342.903-.878 1.708-1.415 2.22-.586.488-1.17.732-1.78.732zm2.14-13.385c.634-.731 1.02-1.756 1.02-2.828.024-1.511-1.074-2.292-2.245-2.292-1.22 0-2.244.829-2.879 2.024-.561.975-.951 2.146-.951 3.244 0 1.512 1.147 2.317 2.318 2.317 1.195 0 2.122-.78 2.737-1.465z" fill="currentColor"></path></svg>
+                    Sign up with Apple
+                </button>
+</div>
+<div class="mt-8 text-center">
+<p class="text-zinc-600 dark:text-zinc-400 text-sm">
+                    Already have an account? <a class="font-medium text-primary hover:underline" href="#">Log In</a>
+</p>
+</div>
+</div>
+</div>
+</body></html>

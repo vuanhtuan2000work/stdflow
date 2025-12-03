@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Spaced Repetition Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#5048e5",
+              "background-light": "#f6f6f8",
+              "background-dark": "#121121",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark">
+<div class="relative mx-auto flex h-full min-h-screen w-full max-w-md flex-col font-display">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 flex items-center justify-between bg-background-light/80 px-4 py-3 backdrop-blur-sm dark:bg-background-dark/80">
+<button class="flex size-10 shrink-0 items-center justify-center text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+</button>
+<h1 class="flex-1 text-center text-lg font-bold text-slate-900 dark:text-white">Spaced Repetition</h1>
+<button class="shrink-0 rounded-lg px-4 py-2 text-base font-bold text-primary dark:text-primary">Save</button>
+</header>
+<main class="flex-1 pb-24">
+<!-- Section: New Cards -->
+<section class="mt-4 px-4">
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] text-slate-900 dark:text-white">New Cards</h2>
+<div class="mt-3 flex flex-col gap-1 rounded-xl bg-slate-100 p-1 dark:bg-slate-800/50">
+<div class="flex min-h-[72px] items-center gap-4 rounded-lg bg-background-light p-4 dark:bg-background-dark">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+<span class="material-symbols-outlined">fast_forward</span>
+</div>
+<div class="flex-1">
+<p class="font-medium text-slate-800 dark:text-white">Steps (in minutes)</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Intervals for new cards</p>
+</div>
+<p class="shrink-0 font-medium text-slate-800 dark:text-white">1 10</p>
+</div>
+<div class="flex min-h-[72px] items-center gap-4 rounded-lg bg-background-light p-4 dark:bg-background-dark">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+<span class="material-symbols-outlined">school</span>
+</div>
+<div class="flex-1">
+<p class="font-medium text-slate-800 dark:text-white">Graduating interval</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">From learning to review</p>
+</div>
+<p class="shrink-0 font-medium text-slate-800 dark:text-white">1 day</p>
+</div>
+</div>
+</section>
+<!-- Section: Reviews -->
+<section class="mt-8 px-4">
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] text-slate-900 dark:text-white">Reviews</h2>
+<div class="mt-3 flex flex-col gap-1 rounded-xl bg-slate-100 p-1 dark:bg-slate-800/50">
+<div class="flex min-h-[72px] items-center gap-4 rounded-lg bg-background-light p-4 dark:bg-background-dark">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+<span class="material-symbols-outlined">checklist</span>
+</div>
+<div class="flex-1">
+<p class="font-medium text-slate-800 dark:text-white">Max reviews/day</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Limit daily review count</p>
+</div>
+<p class="shrink-0 font-medium text-slate-800 dark:text-white">200</p>
+</div>
+<div class="flex min-h-[72px] items-center gap-4 rounded-lg bg-background-light p-4 dark:bg-background-dark">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<div class="flex-1">
+<p class="font-medium text-slate-800 dark:text-white">Interval modifier</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Adjust review spacing</p>
+</div>
+<p class="shrink-0 font-medium text-slate-800 dark:text-white">100%</p>
+</div>
+</div>
+</section>
+<!-- Section: Advanced -->
+<section class="mt-8 px-4">
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] text-slate-900 dark:text-white">Advanced</h2>
+<div class="mt-3 flex flex-col gap-1 rounded-xl bg-slate-100 p-1 dark:bg-slate-800/50">
+<div class="flex min-h-[72px] items-center gap-4 rounded-lg bg-background-light p-4 dark:bg-background-dark">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+<span class="material-symbols-outlined">bug_report</span>
+</div>
+<div class="flex-1">
+<p class="font-medium text-slate-800 dark:text-white">Leech card suspension</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Suspend difficult cards</p>
+</div>
+<div class="relative inline-block h-[34px] w-[52px] shrink-0 cursor-pointer rounded-full bg-slate-200 transition-colors duration-200 ease-in-out has-[:checked]:bg-primary dark:bg-slate-700">
+<input checked="" class="peer sr-only" type="checkbox"/>
+<span class="inline-block h-8 w-8 translate-x-[2px] translate-y-[2px] transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out peer-checked:translate-x-[22px]"></span>
+</div>
+</div>
+<div class="flex min-h-[72px] flex-col gap-2 rounded-lg bg-background-light p-4 dark:bg-background-dark">
+<div class="flex items-center gap-4">
+<div class="flex-1">
+<p class="font-medium text-slate-800 dark:text-white">Starting Ease</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Initial difficulty factor</p>
+</div>
+<p class="shrink-0 font-medium text-slate-800 dark:text-white">250%</p>
+</div>
+<input class="h-2 w-full cursor-pointer appearance-none rounded-full bg-slate-200 dark:bg-slate-700 [&amp;::-webkit-slider-thumb]:h-5 [&amp;::-webkit-slider-thumb]:w-5 [&amp;::-webkit-slider-thumb]:appearance-none [&amp;::-webkit-slider-thumb]:rounded-full [&amp;::-webkit-slider-thumb]:bg-primary" max="300" min="130" type="range" value="250"/>
+</div>
+</div>
+</section>
+<!-- Reset Button -->
+<div class="mt-8 px-4">
+<button class="w-full rounded-lg py-3 text-center font-semibold text-primary dark:text-primary">Reset to Defaults</button>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 z-10 w-full max-w-md border-t border-slate-200 bg-background-light/80 backdrop-blur-sm dark:border-slate-800 dark:bg-background-dark/80">
+<div class="flex h-16 justify-around">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-500 dark:text-slate-400" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-xs font-medium">Home</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary dark:text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">style</span>
+<span class="text-xs font-bold">Decks</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-500 dark:text-slate-400" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-xs font-medium">Stats</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-500 dark:text-slate-400" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-xs font-medium">Profile</span>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

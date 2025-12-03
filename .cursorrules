@@ -1,0 +1,360 @@
+# StudyFlow - Cursor AI Rules & Guidelines
+
+## 🎯 PROJECT CONTEXT
+You are a Master Full-Stack Developer working on StudyFlow - a web-based learning platform with:
+- **Frontend:** Next.js 14 (App Router) + TypeScript + Tailwind CSS + PWA
+- **Backend:** Supabase (PostgreSQL + Auth + Storage + RLS)
+- **State Management:** Zustand
+- **UI Components:** Custom components based on design system
+
+## 📋 REQUIRED FILES (Read First, Priority Order)
+1. **StudyFlow-Database-Schema-with-User-Roles.md** - Database structure, RLS policies, relationships
+2. **Technical-Implementation-guide.pdf** - Backend setup, API patterns, folder structure
+3. **flow-design-spec.pdf** - Design system, components, responsive breakpoints
+4. **UI-design-example/** folder - Reference UI components and layouts
+
+## 🔄 DEVELOPMENT WORKFLOW (Strict Priority)
+
+### Phase 0: Foundation Setup
+1. Database schema (Supabase SQL scripts)
+2. Environment variables (.env.local)
+3. Folder structure (exact match Technical-Implementation-guide.pdf)
+4. Design tokens in Tailwind config (from flow-design-spec.pdf)
+
+### Phase 1: Authentication & Core
+1. Supabase client setup (lib/supabase/)
+2. Auth middleware (middleware.ts)
+3. Auth layouts ((auth)/ group)
+4. Login/Onboarding screens
+
+### Phase 2: Components (Atomic Design Order)
+1. **Atoms** (Button, Input, Badge, Icon, Avatar) - from flow-design-spec.pdf
+2. **Molecules** (Card, FormField, SearchBar) - combine atoms
+3. **Organisms** (BottomNav, Sidebar, TopNav) - complex components
+4. **Templates** (Layout patterns) - page structures
+
+### Phase 3: Features (User Flow Order)
+1. Dashboard (home page)
+2. Subject management (CRUD)
+3. Flashcard management (CRUD)
+4. Review mode (SM-2 algorithm)
+5. Calendar & stats
+6. Profile & settings
+
+### Phase 4: Enhancement
+1. PWA configuration (manifest, service worker)
+2. Offline mode
+3. Performance optimization
+4. Error boundaries
+
+## 🎨 UI/UX RULES (Non-Negotiable)
+
+### Design Reference Priority
+1. **ALWAYS check UI-design-example/ folder first** for component implementation
+2. Match exact spacing, colors, typography from flow-design-spec.pdf
+3. Use design tokens (no hardcoded values)
+4. Follow 8pt grid system (4px, 8px, 16px, 24px, 32px...)
+
+### Responsive Design (Mobile-First)
+// Breakpoints (from Tailwind config)
+mobile: 320-767px // Default, no prefix
+tablet: 768-1023px // md: prefix
+desktop: 1024px+ // lg: prefix
+
+// Example
+
+<div className="w-full md:w-1/2 lg:w-1/3"> ```
+Component Structure
+// ALWAYS follow this pattern for components
+components/
+  ui/           // Atoms (Button, Input, Card...)
+  layout/       // Organisms (BottomNav, Sidebar...)
+  features/     // Feature-specific (flashcard/, dashboard/...)
+  
+// File naming: kebab-case (e.g., bottom-nav.tsx)
+// Component naming: PascalCase (e.g., BottomNav)
+
+🗄️ DATABASE RULES (Supabase)
+RLS Policy Pattern
+-- ALWAYS follow this pattern for new tables
+ALTER TABLE table_name ENABLE ROW LEVEL SECURITY;
+
+-- Users manage own data
+CREATE POLICY "Users manage own data"
+ON table_name FOR ALL
+TO authenticated
+USING (auth.uid() = user_id)
+WITH CHECK (auth.uid() = user_id);
+
+Query Pattern (TypeScript)
+// ALWAYS use server-side for initial data
+// app/dashboard/page.tsx
+import { createClient } from '@/lib/supabase/server'
+
+export default async function DashboardPage() {
+  const supabase = createClient()
+  const { data } = await supabase.from('subjects').select('*')
+  return <DashboardClient initialData={data} />
+}
+
+// Client component for interactions
+'use client'
+import { createClient } from '@/lib/supabase/client'
+
+Type Safety
+// ALWAYS import types from database.types.ts
+import type { Flashcard, Subject } from '@/lib/types/database.types'
+
+// NEVER use 'any' - use proper types
+🔐 SECURITY RULES (Critical)
+Auth Check Pattern
+
+// ALWAYS check auth in server components
+const supabase = createClient()
+const { data: { user }, error } = await supabase.auth.getUser()
+
+if (!user) {
+  redirect('/login')
+}
+RLS Enforcement
+NEVER bypass RLS with service_role key in client code
+
+ALWAYS use anon key for client operations
+
+RLS policies MUST enforce all access control
+
+📝 CODE STYLE RULES
+TypeScript
+
+// Use strict types
+const config: Config = { ... }
+
+// Avoid optional chaining hell - validate early
+if (!user?.id) throw new Error('Unauthorized')
+
+// Use descriptive names
+const getDueFlashcardsForUser = () => { ... } // Good
+const get = () => { ... } // Bad
+
+React Patterns
+// Server Component (default)
+export default async function Page() {
+  const data = await fetchData()
+  return <ClientComponent data={data} />
+}
+
+// Client Component (when needed)
+'use client'
+export function ClientComponent({ data }: Props) {
+  const [state, setState] = useState(data)
+  // ... interactive logic
+}
+
+Error Handling
+// ALWAYS handle errors explicitly
+try {
+  const { data, error } = await supabase.from('table').select()
+  if (error) throw error
+  return data
+} catch (error) {
+  console.error('Context:', error)
+  toast.error('User-friendly message')
+  return null
+}
+
+🎯 WHEN IMPLEMENTING NEW FEATURES
+Step-by-Step Process
+Check Database Schema - Verify table exists, understand relationships
+
+Check Design Spec - Find UI mockup in flow-design-spec.pdf or UI-design-example/
+
+Create Types - Add TypeScript interfaces
+
+Build Components - Atoms → Molecules → Organisms
+
+Implement Logic - Server actions → Client interactions
+
+Add RLS Policy - Secure data access
+
+Test Flow - User journey from start to finish
+
+Code Review Checklist (Self-Check)
+ Types defined (no 'any')
+
+ RLS policy added/verified
+
+ Error handling implemented
+
+ Loading states included
+
+ Responsive design (mobile/tablet/desktop)
+
+ Accessibility (keyboard nav, ARIA labels)
+
+ Design tokens used (no magic numbers)
+
+ Performance considered (lazy loading, memoization)
+
+🚫 NEVER DO THIS
+Hardcode values - Use design tokens from Tailwind config
+
+Bypass RLS - Always use proper auth checks
+
+Mix server/client logic - Keep separation clear
+
+Use inline styles - Use Tailwind classes only
+
+Ignore TypeScript errors - Fix types, don't suppress
+
+Copy-paste without understanding - Adapt to context
+
+Skip error handling - Every async operation needs try-catch
+
+Forget mobile-first - Start with mobile, enhance for desktop
+
+🎨 COMPONENT EXAMPLE (Reference Template)
+// components/ui/button.tsx
+import { cn } from '@/lib/utils/cn'
+import { ButtonHTMLAttributes, forwardRef } from 'react'
+
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'secondary' | 'outline' | 'danger' | 'ghost'
+  size?: 'sm' | 'md' | 'lg'
+  isLoading?: boolean
+}
+
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant = 'primary', size = 'md', isLoading, children, ...props }, ref) => {
+    return (
+      <button
+        ref={ref}
+        disabled={isLoading || props.disabled}
+        className={cn(
+          // Base styles
+          'inline-flex items-center justify-center rounded-md font-medium',
+          'transition-colors focus-visible:outline-none focus-visible:ring-2',
+          'disabled:pointer-events-none disabled:opacity-50',
+          
+          // Variants (from design tokens)
+          {
+            'bg-primary-500 text-white hover:bg-primary-600': variant === 'primary',
+            'bg-gray-100 text-gray-900 hover:bg-gray-200': variant === 'secondary',
+            'border border-primary-500 text-primary-500 hover:bg-primary-50': variant === 'outline',
+            'bg-error-500 text-white hover:bg-error-600': variant === 'danger',
+            'text-primary-500 hover:bg-primary-50': variant === 'ghost',
+          },
+          
+          // Sizes (from design spec)
+          {
+            'h-8 px-3 text-sm': size === 'sm',
+            'h-10 px-4 md:h-10': size === 'md',
+            'h-12 px-6 md:h-12': size === 'lg',
+          },
+          
+          className
+        )}
+        {...props}
+      >
+        {isLoading ? (
+          <>
+            <svg className="mr-2 h-4 w-4 animate-spin" viewBox="0 0 24 24">
+              {/* Loading spinner */}
+            </svg>
+            Đang xử lý...
+          </>
+        ) : (
+          children
+        )}
+      </button>
+    )
+  }
+)
+
+Button.displayName = 'Button'
+
+🔍 WHEN YOU'RE STUCK
+Debugging Process
+Check Schema - Is table/column correct? RLS policy active?
+
+Check Types - TypeScript error? Fix types, don't ignore
+
+Check Console - Network errors? Auth issues? SQL errors?
+
+Check Design - Does it match UI-design-example/?
+
+Check Flow - Follow user journey in flow-design-spec.pdf
+
+Ask Yourself
+"Does this follow the atomic design structure?"
+
+"Is this server or client component? (Do I need 'use client'?)"
+
+"Have I secured this with RLS?"
+
+"Does this match the design spec exactly?"
+
+"Will this work on mobile (320px width)?"
+
+📚 QUICK REFERENCE
+Import Paths (Use Alias)
+
+import { Button } from '@/components/ui/button'
+import { createClient } from '@/lib/supabase/client'
+import type { Flashcard } from '@/lib/types/database.types'
+import { cn } from '@/lib/utils/cn'
+
+
+Supabase Queries (Common Patterns)
+// SELECT with relation
+const { data } = await supabase
+  .from('flashcards')
+  .select('*, subjects(name, color)')
+  .eq('user_id', user.id)
+
+// INSERT
+const { data, error } = await supabase
+  .from('flashcards')
+  .insert({ front_text: 'Q', back_text: 'A', user_id: user.id })
+  .select()
+  .single()
+
+// UPDATE
+const { error } = await supabase
+  .from('flashcards')
+  .update({ front_text: 'Updated Q' })
+  .eq('id', flashcardId)
+  .eq('user_id', user.id) // RLS enforcement
+
+// DELETE
+const { error } = await supabase
+  .from('flashcards')
+  .delete()
+  .eq('id', flashcardId)
+  .eq('user_id', user.id)
+
+🎓 MASTER MINDSET
+Think like a senior developer:
+
+Consistency over cleverness
+
+Maintainability over brevity
+
+User experience over developer experience
+
+Security over convenience
+
+Type safety over flexibility
+
+When in doubt:
+
+Check the specs (Database Schema → Technical Guide → Design Spec)
+
+Check UI-design-example/ folder
+
+Follow the patterns already established in the codebase
+
+Keep it simple, stupid (KISS principle)
+
+
+IMPORTANT NOTED: 
+PLEASE NEVER PUSH SENSITIVE INFORMATIONS & .pdf & .md (subtract readme.md) TO GITHUB.

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Subject Create/Edit</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#5048e5",
+              "background-light": "#f6f6f8",
+              "background-dark": "#121121",
+            },
+            fontFamily: {
+              "display": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark">
+<div class="relative mx-auto flex h-auto min-h-screen w-full max-w-md flex-col overflow-x-hidden bg-background-light dark:bg-background-dark font-display">
+<!-- Top App Bar -->
+<div class="flex items-center p-4">
+<button class="text-primary text-base font-medium leading-normal shrink-0">Cancel</button>
+<h1 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">New Subject</h1>
+<button class="text-primary text-base font-bold leading-normal tracking-[0.015em] shrink-0">Save</button>
+</div>
+<div class="flex-grow p-4">
+<div class="space-y-6">
+<!-- Subject Details Section -->
+<div class="bg-white dark:bg-[#1C1B32] rounded-xl">
+<!-- Subject Name TextField -->
+<div class="p-4">
+<label class="flex flex-col">
+<p class="text-slate-900 dark:text-white text-base font-medium leading-normal pb-2">Subject Name</p>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-slate-400 dark:text-[#9795C6]">auto_stories</span>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg border-slate-200 dark:border-[#383663] bg-slate-100 dark:bg-[#2A2946] pl-10 pr-4 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-[#9795C6] focus:border-primary focus:ring-primary h-14 text-base font-normal leading-normal" placeholder="e.g., Quantum Physics" value=""/>
+</div>
+</label>
+</div>
+<!-- Divider -->
+<div class="h-px bg-slate-200 dark:bg-[#383663] mx-4"></div>
+<!-- Description TextField -->
+<div class="p-4">
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-slate-900 dark:text-white text-base font-medium leading-normal pb-2">Description (optional)</p>
+<textarea class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg border-slate-200 dark:border-[#383663] bg-slate-100 dark:bg-[#2A2946] min-h-36 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-[#9795c6] p-4 text-base font-normal leading-normal focus:border-primary focus:ring-primary" placeholder="Add a short description or goals"></textarea>
+</label>
+</div>
+</div>
+<!-- Color Section -->
+<div class="bg-white dark:bg-[#1C1B32] rounded-xl p-4">
+<h3 class="text-slate-900 dark:text-white text-base font-medium leading-tight mb-4">Color</h3>
+<div class="flex flex-wrap gap-4 justify-start">
+<label class="size-10 rounded-full ring-offset-2 ring-offset-white dark:ring-offset-[#1C1B32] has-[:checked]:ring-2" style="background-color: rgb(0, 122, 255);">
+<input checked="" class="invisible" name="color-picker" type="radio"/>
+</label>
+<label class="size-10 rounded-full ring-offset-2 ring-offset-white dark:ring-offset-[#1C1B32] has-[:checked]:ring-2" style="background-color: rgb(52, 199, 89);">
+<input class="invisible" name="color-picker" type="radio"/>
+</label>
+<label class="size-10 rounded-full ring-offset-2 ring-offset-white dark:ring-offset-[#1C1B32] has-[:checked]:ring-2" style="background-color: rgb(255, 149, 0);">
+<input class="invisible" name="color-picker" type="radio"/>
+</label>
+<label class="size-10 rounded-full ring-offset-2 ring-offset-white dark:ring-offset-[#1C1B32] has-[:checked]:ring-2" style="background-color: rgb(255, 59, 48);">
+<input class="invisible" name="color-picker" type="radio"/>
+</label>
+<label class="size-10 rounded-full ring-offset-2 ring-offset-white dark:ring-offset-[#1C1B32] has-[:checked]:ring-2" style="background-color: rgb(175, 82, 222);">
+<input class="invisible" name="color-picker" type="radio"/>
+</label>
+<label class="size-10 rounded-full ring-offset-2 ring-offset-white dark:ring-offset-[#1C1B32] has-[:checked]:ring-2" style="background-color: rgb(88, 86, 214);">
+<input class="invisible" name="color-picker" type="radio"/>
+</label>
+<label class="size-10 rounded-full ring-offset-2 ring-offset-white dark:ring-offset-[#1C1B32] has-[:checked]:ring-2" style="background-color: rgb(255, 45, 85);">
+<input class="invisible" name="color-picker" type="radio"/>
+</label>
+<label class="size-10 rounded-full ring-offset-2 ring-offset-white dark:ring-offset-[#1C1B32] has-[:checked]:ring-2" style="background-color: rgb(10, 207, 192);">
+<input class="invisible" name="color-picker" type="radio"/>
+</label>
+</div>
+</div>
+<!-- Delete Button -->
+<div class="pt-4">
+<button class="flex w-full items-center justify-center gap-2 rounded-xl bg-red-500/10 dark:bg-red-500/20 px-4 py-3.5 text-red-500">
+<span class="material-symbols-outlined">delete</span>
+<span class="text-base font-semibold">Delete Subject</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</body></html>
