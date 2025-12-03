@@ -69,17 +69,47 @@ export async function GET(request: NextRequest) {
   }
 
   // Check if user has profile
-  const { data: profile } = await supabase
+  let { data: profile } = await supabase
     .from('profiles')
-    .select('username')
+    .select('username, full_name, avatar_url')
     .eq('id', user.id)
     .single()
 
-  // Redirect based on profile status with cookies
-  if (profile?.username) {
-    response = NextResponse.redirect(new URL('/dashboard', requestUrl.origin))
-  } else {
+  // If profile doesn't exist, create it from OAuth metadata
+  if (!profile) {
+    const metadata = user.user_metadata || {}
+    const username = metadata.username || 
+                     metadata.preferred_username || 
+                     (metadata.name ? metadata.name.toLowerCase().replace(/\s+/g, '') : null) ||
+                     user.email?.split('@')[0] ||
+                     `user_${user.id.slice(0, 8)}`
+    
+    const { data: newProfile, error: createError } = await supabase
+      .from('profiles')
+      .insert({
+        id: user.id,
+        username: username,
+        full_name: metadata.full_name || metadata.name || null,
+        avatar_url: metadata.avatar_url || metadata.picture || null,
+      })
+      .select()
+      .single()
+
+    if (createError) {
+      console.error('Error creating profile:', createError)
+      // Still redirect to setup-profile if creation fails
+      response = NextResponse.redirect(new URL('/setup-profile', requestUrl.origin))
+      return response
+    }
+
+    profile = newProfile
+  }
+
+  // If profile exists but no username, redirect to setup
+  if (!profile?.username) {
     response = NextResponse.redirect(new URL('/setup-profile', requestUrl.origin))
+  } else {
+    response = NextResponse.redirect(new URL('/dashboard', requestUrl.origin))
   }
 
   // Ensure cookies are set in the redirect response
