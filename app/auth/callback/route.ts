@@ -98,21 +98,47 @@ export async function GET(request: NextRequest) {
     if (createError) {
       console.error('Error creating profile:', createError)
       // Still redirect to setup-profile if creation fails
-      response = NextResponse.redirect(new URL('/setup-profile', requestUrl.origin))
-      return response
+      // Create new redirect but preserve cookies
+      const redirectResponse = NextResponse.redirect(new URL('/setup-profile', requestUrl.origin))
+      // Copy all cookies from original response
+      response.cookies.getAll().forEach((cookie) => {
+        redirectResponse.cookies.set(cookie.name, cookie.value, {
+          path: cookie.path,
+          domain: cookie.domain,
+          maxAge: cookie.maxAge,
+          expires: cookie.expires,
+          httpOnly: cookie.httpOnly,
+          secure: cookie.secure,
+          sameSite: cookie.sameSite as any,
+        })
+      })
+      return redirectResponse
     }
 
     profile = newProfile
   }
 
-  // If profile exists but no username, redirect to setup
-  if (!profile?.username) {
-    response = NextResponse.redirect(new URL('/setup-profile', requestUrl.origin))
-  } else {
-    response = NextResponse.redirect(new URL('/dashboard', requestUrl.origin))
-  }
+  // Determine redirect URL
+  const redirectUrl = profile?.username 
+    ? new URL('/dashboard', requestUrl.origin)
+    : new URL('/setup-profile', requestUrl.origin)
 
-  // Ensure cookies are set in the redirect response
-  return response
+  // Create redirect response and preserve all cookies
+  const redirectResponse = NextResponse.redirect(redirectUrl)
+  
+  // Copy all cookies from original response (which has session cookies)
+  response.cookies.getAll().forEach((cookie) => {
+    redirectResponse.cookies.set(cookie.name, cookie.value, {
+      path: cookie.path,
+      domain: cookie.domain,
+      maxAge: cookie.maxAge,
+      expires: cookie.expires,
+      httpOnly: cookie.httpOnly,
+      secure: cookie.secure,
+      sameSite: cookie.sameSite as any,
+    })
+  })
+
+  return redirectResponse
 }
 
