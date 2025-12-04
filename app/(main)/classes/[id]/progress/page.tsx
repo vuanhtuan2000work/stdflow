@@ -46,7 +46,7 @@ export default async function StudentProgressPage({
   // Get study sessions for class members
   const memberIds = members?.map(m => m.profiles?.id).filter(Boolean) || []
   
-  const { data: studySessions } = memberIds.length > 0
+  const { data: studySessionsData } = memberIds.length > 0
     ? await supabase
         .from('study_sessions')
         .select(`
@@ -62,11 +62,21 @@ export default async function StudentProgressPage({
         .gte('studied_at', new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString())
     : { data: null }
 
+  // Transform data to match interface (handle array case)
+  const studySessions = studySessionsData?.map((session: any) => ({
+    user_id: session.user_id,
+    rating: session.rating,
+    studied_at: session.studied_at,
+    flashcards: Array.isArray(session.flashcards) 
+      ? session.flashcards[0] || null 
+      : session.flashcards || null
+  })) || []
+
   return (
     <StudentProgressClient
       classData={classData}
       members={members || []}
-      studySessions={studySessions || []}
+      studySessions={studySessions}
     />
   )
 }
