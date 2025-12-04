@@ -158,8 +158,7 @@ export function ShareFlashcardsClient({
                 <SearchBar
                   placeholder="Tìm kiếm flashcards..."
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  onClear={() => setSearchQuery('')}
+                  onChange={(value) => setSearchQuery(value)}
                 />
 
                 <div className="flex items-center justify-between">
