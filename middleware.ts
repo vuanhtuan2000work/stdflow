@@ -71,9 +71,6 @@ export async function middleware(request: NextRequest) {
     })
   }
 
-  // TEMPORARY BYPASS: Set to true to bypass auth (for testing only)
-  const BYPASS_AUTH = process.env.BYPASS_AUTH === 'true' || true // TEMP: Always bypass
-
   // Protect routes that require authentication
   const isAuthRoute = request.nextUrl.pathname.startsWith('/login') || 
                       request.nextUrl.pathname.startsWith('/onboarding') ||
@@ -92,7 +89,7 @@ export async function middleware(request: NextRequest) {
                            request.nextUrl.pathname.startsWith('/subjects')
 
   // Redirect unauthenticated users away from protected routes
-  if (isProtectedRoute && !user && !BYPASS_AUTH) {
+  if (isProtectedRoute && !user) {
     if (process.env.NODE_ENV === 'development') {
       console.log(`🔐 [Middleware] ❌ No user, redirecting to /login`)
     }

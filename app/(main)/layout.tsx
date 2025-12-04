@@ -11,72 +11,46 @@ export default async function MainLayout({
 }) {
   const supabase = await createClient()
   
-  // TEMPORARY BYPASS: Set to true to bypass auth (for testing only)
-  const BYPASS_AUTH = process.env.BYPASS_AUTH === 'true' || true // TEMP: Always bypass
-  
   // Check auth
   const {
     data: { user },
   } = await supabase.auth.getUser()
 
-  if (!user && !BYPASS_AUTH) {
+  if (!user) {
     redirect('/login')
   }
 
-  // Get profile (or create mock if bypassing)
-  let profile
-  if (BYPASS_AUTH && !user) {
-    // Mock profile for bypass
-    profile = {
-      id: 'bypass-user-id',
-      username: 'testuser',
-      full_name: 'Test User',
-      avatar_url: null,
-      study_streak: 0,
-      total_study_time_minutes: 0,
-      total_xp: 0,
-    }
-  } else {
-    const { data: profileData } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', user!.id)
-      .single()
-    
-    profile = profileData
+  // Get profile
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', user.id)
+    .single()
 
-    if (!profile?.username && !BYPASS_AUTH) {
-      redirect('/setup-profile')
-    }
+  if (!profile?.username) {
+    redirect('/setup-profile')
   }
 
   // Check if user is teacher
-  let isTeacher = false
-  let subjects: any[] = []
-  
-  if (!BYPASS_AUTH && user) {
-    const { data: userRoles } = await supabase
-      .from('user_roles')
-      .select(`
-        roles (
-          name
-        )
-      `)
-      .eq('user_id', user.id)
+  const { data: userRoles } = await supabase
+    .from('user_roles')
+    .select(`
+      roles (
+        name
+      )
+    `)
+    .eq('user_id', user.id)
 
-    isTeacher = userRoles?.some(ur => 
-      ur.roles && (ur.roles.name === 'teacher' || ur.roles.name === 'admin')
-    ) || false
+  const isTeacher = userRoles?.some(ur => 
+    ur.roles && (ur.roles.name === 'teacher' || ur.roles.name === 'admin')
+  ) || false
 
-    // Get subjects for sidebar
-    const { data: subjectsData } = await supabase
-      .from('subjects')
-      .select('*')
-      .eq('user_id', user.id)
-      .order('created_at', { ascending: true })
-    
-    subjects = subjectsData || []
-  }
+  // Get subjects for sidebar
+  const { data: subjects } = await supabase
+    .from('subjects')
+    .select('*')
+    .eq('user_id', user.id)
+    .order('created_at', { ascending: true })
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex">

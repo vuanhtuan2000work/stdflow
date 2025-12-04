@@ -2,54 +2,26 @@ import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 
 export default async function HomePage() {
-  // TEMPORARY BYPASS: Set to true to bypass auth (for testing only)
-  const BYPASS_AUTH = process.env.BYPASS_AUTH === 'true' || true // TEMP: Always bypass
-  
-  // If bypass is enabled, redirect straight to dashboard
-  if (BYPASS_AUTH) {
-    redirect('/dashboard')
-  }
-  
-  console.log('🏠 [HomePage] Starting...')
-  
   const supabase = await createClient()
   const {
     data: { user },
     error: userError,
   } = await supabase.auth.getUser()
 
-  console.log('🏠 [HomePage] getUser result:', {
-    hasUser: !!user,
-    userId: user?.id,
-    userEmail: user?.email,
-    error: userError?.message,
-  })
-
   if (user) {
     // Check if user has profile
-    const { data: profile, error: profileError } = await supabase
+    const { data: profile } = await supabase
       .from('profiles')
       .select('username, full_name')
       .eq('id', user.id)
       .single()
 
-    console.log('🏠 [HomePage] Profile check:', {
-      hasProfile: !!profile,
-      username: profile?.username,
-      fullName: profile?.full_name,
-      profileError: profileError?.message,
-      profileData: profile,
-    })
-
     if (profile?.username) {
-      console.log('🏠 [HomePage] ✅ Redirecting to /dashboard (has username)')
       redirect('/dashboard')
     } else {
-      console.log('🏠 [HomePage] ⚠️ Redirecting to /setup-profile (no username)')
       redirect('/setup-profile')
     }
   } else {
-    console.log('🏠 [HomePage] ❌ No user found, redirecting to /onboarding')
     redirect('/onboarding')
   }
 }
