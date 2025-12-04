@@ -215,7 +215,7 @@ export function ClassDetailClient({
                       aria-label="Sao chép mã lớp"
                     >
                       {copiedCode ? (
-                        <Icon name="check" size={24} color="success" />
+                        <Icon name="check" size={24} color="active" className="text-success-500" />
                       ) : (
                         <Icon name="copy" size={24} color="active" />
                       )}

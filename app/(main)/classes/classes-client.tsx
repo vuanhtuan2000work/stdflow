@@ -137,7 +137,7 @@ export function ClassesClient({ classes }: ClassesClientProps) {
                             aria-label="Sao chép mã lớp"
                           >
                             {copiedCode === classItem.class_code ? (
-                              <Icon name="check" size={20} color="success" />
+                              <Icon name="check" size={20} color="active" className="text-success-500" />
                             ) : (
                               <Icon name="copy" size={20} color="active" />
                             )}
