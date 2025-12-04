@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
@@ -16,6 +16,7 @@ import { Sidebar } from '@/components/layout/sidebar'
 import { toast } from 'react-hot-toast'
 import type { Profile, EducationLevel } from '@/lib/types/database.types'
 import { cn } from '@/lib/utils/cn'
+import { format } from 'date-fns'
 
 interface ProfileClientProps {
   profile: Profile
@@ -28,9 +29,12 @@ interface ProfileClientProps {
 
 export function ProfileClient({ profile: initialProfile, stats }: ProfileClientProps) {
   const router = useRouter()
+  const supabase = createClient()
+  const fileInputRef = useRef<HTMLInputElement>(null)
   const [profile, setProfile] = useState(initialProfile)
   const [isEditing, setIsEditing] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [isUploading, setIsUploading] = useState(false)
   const [fullName, setFullName] = useState(profile.full_name || '')
   const [educationLevel, setEducationLevel] = useState<EducationLevel | ''>(
     profile.education_level || ''
@@ -74,8 +78,52 @@ export function ProfileClient({ profile: initialProfile, stats }: ProfileClientP
     }
   }
 
+  const handleAvatarClick = () => {
+    fileInputRef.current?.click()
+  }
+
+  const handleAvatarUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    try {
+      setIsUploading(true)
+
+      // Upload to Supabase Storage
+      const fileExt = file.name.split('.').pop()
+      const fileName = `${profile.id}/avatar.${fileExt}`
+      
+      const { error: uploadError } = await supabase.storage
+        .from('avatars')
+        .upload(fileName, file, { upsert: true })
+
+      if (uploadError) throw uploadError
+
+      // Get public URL
+      const { data: { publicUrl } } = supabase.storage
+        .from('avatars')
+        .getPublicUrl(fileName)
+
+      // Update profile
+      const { error: updateError } = await supabase
+        .from('profiles')
+        .update({ avatar_url: publicUrl })
+        .eq('id', profile.id)
+
+      if (updateError) throw updateError
+
+      setProfile({ ...profile, avatar_url: publicUrl })
+      toast.success('Cập nhật ảnh đại diện thành công!')
+      router.refresh()
+    } catch (error: any) {
+      console.error('Avatar upload error:', error)
+      toast.error(error.message || 'Không thể tải ảnh lên. Vui lòng thử lại.')
+    } finally {
+      setIsUploading(false)
+    }
+  }
+
   const handleLogout = async () => {
-    const supabase = createClient()
     await supabase.auth.signOut()
     router.push('/login')
     router.refresh()
@@ -106,12 +154,36 @@ export function ProfileClient({ profile: initialProfile, stats }: ProfileClientP
               {/* Avatar and Basic Info */}
               <Card className="lg:col-span-1">
                 <div className="p-6 text-center">
-                  <Avatar
-                    src={profile.avatar_url}
-                    name={profile.full_name || profile.username}
-                    size={96}
-                    className="mx-auto mb-4"
-                  />
+                  {/* Avatar with upload */}
+                  <div className="relative inline-block group mb-4">
+                    <Avatar
+                      src={profile.avatar_url}
+                      name={profile.full_name || profile.username}
+                      size={96}
+                      className="mx-auto cursor-pointer"
+                      onClick={handleAvatarClick}
+                    />
+                    <button
+                      onClick={handleAvatarClick}
+                      disabled={isUploading}
+                      className="absolute inset-0 flex items-center justify-center bg-black/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                      aria-label="Đổi ảnh đại diện"
+                    >
+                      <Icon name="camera" size={24} color="white" />
+                    </button>
+                    {isUploading && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/70 rounded-full">
+                        <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      </div>
+                    )}
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={handleAvatarUpload}
+                    />
+                  </div>
                   <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
                     {profile.full_name || profile.username}
                   </h2>
@@ -233,9 +305,17 @@ export function ProfileClient({ profile: initialProfile, stats }: ProfileClientP
                   <div className="flex justify-between">
                     <span className="text-gray-600 dark:text-gray-400">Ngày tham gia:</span>
                     <span className="text-gray-900 dark:text-white font-medium">
-                      {new Date(profile.created_at).toLocaleDateString('vi-VN')}
+                      {format(new Date(profile.created_at), 'dd/MM/yyyy')}
                     </span>
                   </div>
+                  {profile.last_study_date && (
+                    <div className="flex justify-between">
+                      <span className="text-gray-600 dark:text-gray-400">Học gần nhất:</span>
+                      <span className="text-gray-900 dark:text-white font-medium">
+                        {format(new Date(profile.last_study_date), 'dd/MM/yyyy')}
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
             </Card>

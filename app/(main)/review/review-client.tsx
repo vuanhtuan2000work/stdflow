@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { Card } from '@/components/ui/card'
@@ -12,6 +12,7 @@ import { TopNav } from '@/components/layout/top-nav'
 import { Sidebar } from '@/components/layout/sidebar'
 import { toast } from 'react-hot-toast'
 import { calculateSM2, type Rating } from '@/lib/utils/spaced-repetition'
+import { StudyTimeTracker } from '@/lib/utils/study-time-tracker'
 import type { Flashcard } from '@/lib/types/database.types'
 import { cn } from '@/lib/utils/cn'
 
@@ -21,15 +22,39 @@ interface ReviewClientProps {
 
 export function ReviewClient({ initialFlashcards }: ReviewClientProps) {
   const router = useRouter()
+  const timeTracker = useRef(new StudyTimeTracker())
   const [flashcards, setFlashcards] = useState(initialFlashcards)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isFlipped, setIsFlipped] = useState(false)
   const [isProcessing, setIsProcessing] = useState(false)
   const [completedCount, setCompletedCount] = useState(0)
   const [ratings, setRatings] = useState<Record<string, Rating>>({})
+  const [elapsedTime, setElapsedTime] = useState(0)
 
   const currentFlashcard = flashcards[currentIndex]
   const progress = ((currentIndex + completedCount) / initialFlashcards.length) * 100
+
+  // Start timer when component mounts
+  useEffect(() => {
+    timeTracker.current.start()
+    
+    // Update elapsed time every second
+    const interval = setInterval(() => {
+      setElapsedTime(timeTracker.current.getElapsedSeconds())
+    }, 1000)
+    
+    return () => {
+      clearInterval(interval)
+      timeTracker.current.pause()
+    }
+  }, [])
+
+  // Format time display
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60)
+    const secs = seconds % 60
+    return `${mins}:${secs.toString().padStart(2, '0')}`
+  }
 
   useEffect(() => {
     // Keyboard shortcuts
@@ -120,10 +145,33 @@ export function ReviewClient({ initialFlashcards }: ReviewClientProps) {
         setIsFlipped(false)
         setCompletedCount(completedCount + 1)
       } else {
-        // All done - show congratulations
+        // All done - update study time and show congratulations
         setCompletedCount(completedCount + 1)
+        const studyMinutes = timeTracker.current.getElapsedMinutes()
+        
+        // Update total study time
+        try {
+          const { data: profile } = await supabase
+            .from('profiles')
+            .select('total_study_time_minutes')
+            .eq('id', user.id)
+            .single()
+
+          if (profile) {
+            await supabase
+              .from('profiles')
+              .update({
+                total_study_time_minutes: profile.total_study_time_minutes + studyMinutes
+              })
+              .eq('id', user.id)
+          }
+        } catch (error) {
+          console.error('Error updating study time:', error)
+        }
+
+        timeTracker.current.pause()
         setTimeout(() => {
-          router.push('/review/complete')
+          router.push(`/review/complete?time=${studyMinutes}`)
         }, 500)
       }
     } catch (error: any) {
@@ -152,9 +200,16 @@ export function ReviewClient({ initialFlashcards }: ReviewClientProps) {
                 <h1 className="text-lg font-semibold text-gray-900 dark:text-white">
                   Review Mode
                 </h1>
-                <span className="text-sm text-gray-500 dark:text-gray-400">
-                  {currentIndex + 1} / {initialFlashcards.length}
-                </span>
+                <div className="flex items-center gap-4">
+                  <div className="text-sm text-gray-500 dark:text-gray-400">
+                    Thời gian: <span className="font-mono font-semibold text-primary-500">
+                      {formatTime(elapsedTime)}
+                    </span>
+                  </div>
+                  <span className="text-sm text-gray-500 dark:text-gray-400">
+                    {currentIndex + 1} / {initialFlashcards.length}
+                  </span>
+                </div>
               </div>
               <ProgressBar value={progress} />
             </div>

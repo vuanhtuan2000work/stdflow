@@ -1,5 +1,6 @@
 'use client'
 
+import { memo } from 'react'
 import { Card } from './card'
 import { Icon } from './icon'
 import { cn } from '@/lib/utils/cn'
@@ -13,7 +14,7 @@ interface StatsCardProps {
   gradient?: boolean
 }
 
-export function StatsCard({ icon, value, label, className, gradient }: StatsCardProps) {
+export const StatsCard = memo(function StatsCard({ icon, value, label, className, gradient }: StatsCardProps) {
   return (
     <Card
       className={cn(
@@ -51,6 +52,6 @@ export function StatsCard({ icon, value, label, className, gradient }: StatsCard
       </div>
     </Card>
   )
-}
+})
 
 

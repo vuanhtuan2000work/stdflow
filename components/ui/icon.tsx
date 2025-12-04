@@ -12,11 +12,34 @@ import {
   Search,
   X,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   ArrowLeft,
   Bell,
   Flame,
   CheckCircle2,
   AlertCircle,
+  AlertTriangle,
+  Moon,
+  Database,
+  Camera,
+  Settings,
+  LogOut,
+  BookOpen,
+  BarChart3,
+  Users,
+  Share2,
+  UserCheck,
+  Copy,
+  Check,
+  UserX,
+  TrendingUp,
+  Clock,
+  Target,
+  Trophy,
+  RefreshCw,
+  WifiOff,
+  Wifi,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -24,6 +47,7 @@ import {
 const iconMap: Record<string, LucideIcon> = {
   home: Home,
   cards: FileText,
+  notes: BookOpen,
   calendar: Calendar,
   profile: User,
   plus: Plus,
@@ -32,18 +56,41 @@ const iconMap: Record<string, LucideIcon> = {
   search: Search,
   close: X,
   'chevron-down': ChevronDown,
+  'chevron-left': ChevronLeft,
+  'chevron-right': ChevronRight,
   'arrow-left': ArrowLeft,
   bell: Bell,
   fire: Flame,
   'check-circle': CheckCircle2,
   'alert-circle': AlertCircle,
+  'alert-triangle': AlertTriangle,
+  moon: Moon,
+  database: Database,
+  camera: Camera,
+  settings: Settings,
+  'log-out': LogOut,
+  'bar-chart': BarChart3,
+  statistics: BarChart3,
+  users: Users,
+  share: Share2,
+  'user-check': UserCheck,
+  copy: Copy,
+  check: Check,
+  'user-x': UserX,
+  'trending-up': TrendingUp,
+  clock: Clock,
+  target: Target,
+  trophy: Trophy,
+  'refresh-cw': RefreshCw,
+  'wifi-off': WifiOff,
+  wifi: Wifi,
 }
 
 interface IconProps {
   name: keyof typeof iconMap
   size?: 16 | 20 | 24 | 32 | 48
   className?: string
-  color?: 'default' | 'inactive' | 'active'
+  color?: 'default' | 'inactive' | 'active' | 'white' | 'error'
 }
 
 export function Icon({ name, size = 24, className, color = 'default' }: IconProps) {
@@ -67,11 +114,13 @@ export function Icon({ name, size = 24, className, color = 'default' }: IconProp
           'h-8 w-8': size === 32,
           'h-12 w-12': size === 48,
         },
-        // Colors: gray-900 (default) | gray-500 (inactive) | primary-500 (active)
+        // Colors: gray-900 (default) | gray-500 (inactive) | primary-500 (active) | white | error-500
         {
           'text-gray-900 dark:text-white': color === 'default',
           'text-gray-500 dark:text-gray-400': color === 'inactive',
           'text-primary-500': color === 'active',
+          'text-white': color === 'white',
+          'text-error-500': color === 'error',
         },
         className
       )}

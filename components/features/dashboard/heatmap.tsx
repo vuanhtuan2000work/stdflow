@@ -1,5 +1,6 @@
 'use client'
 
+import { memo } from 'react'
 import { cn } from '@/lib/utils/cn'
 
 interface HeatmapData {
@@ -12,7 +13,7 @@ interface HeatmapProps {
   className?: string
 }
 
-export function Heatmap({ data, className }: HeatmapProps) {
+export const Heatmap = memo(function Heatmap({ data, className }: HeatmapProps) {
   // Get last 7 days
   const days = ['M', 'T', 'W', 'T', 'F', 'S', 'S']
   const today = new Date()
@@ -77,6 +78,6 @@ export function Heatmap({ data, className }: HeatmapProps) {
       </div>
     </div>
   )
-}
+})
 
 

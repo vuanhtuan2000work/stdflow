@@ -8,17 +8,31 @@ import type { Subject } from '@/lib/types/database.types'
 
 interface SidebarProps {
   subjects?: Subject[]
+  isTeacher?: boolean
 }
 
-const mainNavItems = [
+const baseNavItems = [
   { href: '/dashboard', icon: 'home', label: 'Home' },
   { href: '/flashcards', icon: 'cards', label: 'Flashcards' },
+  { href: '/notes', icon: 'notes', label: 'Ghi chú' },
   { href: '/calendar', icon: 'calendar', label: 'Lịch' },
+  { href: '/statistics', icon: 'statistics', label: 'Thống kê' },
+  { href: '/achievements', icon: 'trophy', label: 'Thành tựu' },
   { href: '/profile', icon: 'profile', label: 'Tôi' },
 ] as const
 
-export function Sidebar({ subjects = [] }: SidebarProps) {
+const teacherNavItems = [
+  { href: '/classes', icon: 'users', label: 'Lớp học', teacherOnly: true },
+  { href: '/shared', icon: 'share', label: 'Chia sẻ', teacherOnly: true },
+] as const
+
+export function Sidebar({ subjects = [], isTeacher = false }: SidebarProps) {
   const pathname = usePathname()
+  
+  // Combine nav items based on role
+  const navItems = isTeacher 
+    ? [...baseNavItems.slice(0, 2), ...teacherNavItems, ...baseNavItems.slice(2)]
+    : baseNavItems
 
   return (
     <aside
@@ -39,7 +53,7 @@ export function Sidebar({ subjects = [] }: SidebarProps) {
     >
       {/* Main Navigation */}
       <nav className="space-y-1 mb-6">
-        {mainNavItems.map((item) => {
+        {navItems.map((item) => {
           const isActive = pathname === item.href || pathname?.startsWith(item.href + '/')
           
           return (

@@ -13,47 +13,15 @@ export default async function CalendarPage() {
     redirect('/login')
   }
 
-  // Fetch flashcards with due dates for calendar
+  // Fetch flashcards with all needed fields for calendar
   const { data: flashcards } = await supabase
     .from('flashcards')
-    .select('id, next_review_date')
+    .select('id, front_text, back_text, next_review_date, review_count, interval_days, ease_factor, user_id, subject_id, is_public, created_at, updated_at')
     .eq('user_id', user.id)
-
-  // Fetch study sessions for heatmap
-  const thirtyDaysAgo = new Date()
-  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30)
-  
-  const { data: sessions } = await supabase
-    .from('study_sessions')
-    .select('studied_at')
-    .eq('user_id', user.id)
-    .gte('studied_at', thirtyDaysAgo.toISOString())
-
-  // Process calendar data
-  const calendarData = new Map<string, number>()
-  flashcards?.forEach((card) => {
-    const date = card.next_review_date
-    calendarData.set(date, (calendarData.get(date) || 0) + 1)
-  })
-
-  // Process heatmap data (30 days)
-  const heatmapData = Array.from({ length: 30 }, (_, i) => {
-    const date = new Date()
-    date.setDate(date.getDate() - (29 - i))
-    const dateStr = date.toISOString().split('T')[0]
-    const daySessions = sessions?.filter(
-      (s) => s.studied_at.split('T')[0] === dateStr
-    ) || []
-    return {
-      date: dateStr,
-      minutes: daySessions.length,
-    }
-  })
 
   return (
     <CalendarClient
-      calendarData={Array.from(calendarData.entries())}
-      heatmapData={heatmapData}
+      flashcards={flashcards || []}
     />
   )
 }

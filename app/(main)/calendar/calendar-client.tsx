@@ -1,52 +1,64 @@
 'use client'
 
-import { useState } from 'react'
-import { Heatmap } from '@/components/features/dashboard/heatmap'
-import { StatsCard } from '@/components/ui/stats-card'
+import { Card } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Icon } from '@/components/ui/icon'
 import { BottomNav } from '@/components/layout/bottom-nav'
 import { TopNav } from '@/components/layout/top-nav'
 import { Sidebar } from '@/components/layout/sidebar'
-import { Card } from '@/components/ui/card'
+import { useState, useMemo } from 'react'
+import { Flashcard } from '@/lib/types/database.types'
+import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameDay, isToday } from 'date-fns'
+import { vi } from 'date-fns/locale'
 import { cn } from '@/lib/utils/cn'
 
 interface CalendarClientProps {
-  calendarData: [string, number][] // [date, count]
-  heatmapData: { date: string; minutes: number }[]
+  flashcards: Flashcard[]
 }
 
-export function CalendarClient({ calendarData, heatmapData }: CalendarClientProps) {
-  const [selectedDate, setSelectedDate] = useState<string | null>(null)
+export function CalendarClient({ flashcards }: CalendarClientProps) {
+  const [currentDate, setCurrentDate] = useState(new Date())
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null)
 
-  // Get current month dates
-  const today = new Date()
-  const year = today.getFullYear()
-  const month = today.getMonth()
-  const firstDay = new Date(year, month, 1)
-  const lastDay = new Date(year, month + 1, 0)
-  const daysInMonth = lastDay.getDate()
-  const startingDayOfWeek = firstDay.getDay()
+  // Generate calendar days
+  const calendarDays = useMemo(() => {
+    const start = startOfMonth(currentDate)
+    const end = endOfMonth(currentDate)
+    return eachDayOfInterval({ start, end })
+  }, [currentDate])
 
-  const calendarMap = new Map(calendarData)
+  // Group flashcards by date
+  const flashcardsByDate = useMemo(() => {
+    const grouped = new Map<string, Flashcard[]>()
 
-  const getDateString = (day: number) => {
-    const date = new Date(year, month, day)
-    return date.toISOString().split('T')[0]
+    flashcards.forEach(card => {
+      const dateKey = format(new Date(card.next_review_date), 'yyyy-MM-dd')
+      if (!grouped.has(dateKey)) {
+        grouped.set(dateKey, [])
+      }
+      grouped.get(dateKey)!.push(card)
+    })
+
+    return grouped
+  }, [flashcards])
+
+  // Get flashcards for selected date
+  const selectedFlashcards = useMemo(() => {
+    if (!selectedDate) return []
+    const dateKey = format(selectedDate, 'yyyy-MM-dd')
+    return flashcardsByDate.get(dateKey) || []
+  }, [selectedDate, flashcardsByDate])
+
+  // Get first day of month for padding
+  const firstDayOfMonth = startOfMonth(currentDate)
+  const startingDayOfWeek = firstDayOfMonth.getDay()
+
+  const goToPreviousMonth = () => {
+    setCurrentDate(prev => new Date(prev.getFullYear(), prev.getMonth() - 1, 1))
   }
 
-  const getDueCount = (day: number) => {
-    const dateStr = getDateString(day)
-    return calendarMap.get(dateStr) || 0
-  }
-
-  const isToday = (day: number) => {
-    const dateStr = getDateString(day)
-    const todayStr = today.toISOString().split('T')[0]
-    return dateStr === todayStr
-  }
-
-  const isPast = (day: number) => {
-    const dateStr = getDateString(day)
-    return dateStr < today.toISOString().split('T')[0]
+  const goToNextMonth = () => {
+    setCurrentDate(prev => new Date(prev.getFullYear(), prev.getMonth() + 1, 1))
   }
 
   return (
@@ -59,119 +71,126 @@ export function CalendarClient({ calendarData, heatmapData }: CalendarClientProp
         <main className="flex-1 p-4 md:p-6 lg:p-8 pb-20 md:pb-6">
           <div className="max-w-7xl mx-auto">
             <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">
-              Lịch học tập
+              Lịch ôn tập
             </h1>
 
-            {/* Stats Overview */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-              <StatsCard
-                icon="calendar"
-                value={calendarData.reduce((sum, [, count]) => sum + count, 0)}
-                label="Thẻ cần ôn tập"
-              />
-              <StatsCard
-                icon="fire"
-                value={heatmapData.filter((d) => d.minutes > 0).length}
-                label="Ngày đã học"
-              />
-              <StatsCard
-                icon="cards"
-                value={heatmapData.reduce((sum, d) => sum + d.minutes, 0)}
-                label="Thẻ đã học (30 ngày)"
-              />
-            </div>
-
-            {/* Calendar Grid */}
-            <Card className="mb-8">
-              <div className="p-4 md:p-6">
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                  {today.toLocaleDateString('vi-VN', { month: 'long', year: 'numeric' })}
-                </h2>
-                
-                {/* Day labels */}
-                <div className="grid grid-cols-7 gap-2 mb-2">
-                  {['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'].map((day) => (
-                    <div
-                      key={day}
-                      className="text-center text-sm font-medium text-gray-500 dark:text-gray-400"
-                    >
-                      {day}
-                    </div>
-                  ))}
-                </div>
-
-                {/* Calendar days */}
-                <div className="grid grid-cols-7 gap-2">
-                  {/* Empty cells for days before month starts */}
-                  {Array.from({ length: startingDayOfWeek }).map((_, i) => (
-                    <div key={`empty-${i}`} className="aspect-square" />
-                  ))}
-
-                  {/* Days of month */}
-                  {Array.from({ length: daysInMonth }, (_, i) => {
-                    const day = i + 1
-                    const dueCount = getDueCount(day)
-                    const dateStr = getDateString(day)
-
-                    return (
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {/* Calendar */}
+              <Card className="lg:col-span-2">
+                <div className="p-4 md:p-6">
+                  {/* Header */}
+                  <div className="flex items-center justify-between mb-6">
+                    <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+                      {format(currentDate, 'MMMM yyyy', { locale: vi })}
+                    </h2>
+                    <div className="flex gap-2">
                       <button
-                        key={day}
-                        onClick={() => setSelectedDate(selectedDate === dateStr ? null : dateStr)}
-                        className={cn(
-                          'aspect-square rounded-lg border-2 transition-all',
-                          'flex flex-col items-center justify-center',
-                          isToday(day) && 'border-primary-500 bg-primary-50 dark:bg-primary-900/20',
-                          !isToday(day) && isPast(day) && 'border-gray-300 dark:border-gray-700',
-                          !isToday(day) && !isPast(day) && 'border-gray-200 dark:border-gray-800',
-                          selectedDate === dateStr && 'ring-2 ring-primary-500',
-                          dueCount > 0 && 'bg-primary-100 dark:bg-primary-900/30'
-                        )}
+                        onClick={goToPreviousMonth}
+                        className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                        aria-label="Tháng trước"
                       >
-                        <span
+                        <Icon name="chevron-left" size={20} />
+                      </button>
+                      <button
+                        onClick={goToNextMonth}
+                        className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                        aria-label="Tháng sau"
+                      >
+                        <Icon name="chevron-right" size={20} />
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Weekday headers */}
+                  <div className="grid grid-cols-7 gap-2 mb-2">
+                    {['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'].map(day => (
+                      <div key={day} className="text-center text-sm font-medium text-gray-500 dark:text-gray-400 py-2">
+                        {day}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Calendar grid */}
+                  <div className="grid grid-cols-7 gap-2">
+                    {/* Empty cells for days before month starts */}
+                    {Array.from({ length: startingDayOfWeek }).map((_, i) => (
+                      <div key={`empty-${i}`} className="aspect-square" />
+                    ))}
+
+                    {/* Calendar days */}
+                    {calendarDays.map(day => {
+                      const dateKey = format(day, 'yyyy-MM-dd')
+                      const cardsCount = flashcardsByDate.get(dateKey)?.length || 0
+                      const isSelected = selectedDate && isSameDay(day, selectedDate)
+                      const isTodayDate = isToday(day)
+
+                      return (
+                        <button
+                          key={day.toISOString()}
+                          onClick={() => setSelectedDate(day)}
                           className={cn(
-                            'text-sm font-medium',
-                            isToday(day)
-                              ? 'text-primary-500'
-                              : 'text-gray-700 dark:text-gray-300'
+                            'relative aspect-square p-2 rounded-lg text-sm transition-colors',
+                            isSelected 
+                              ? 'bg-primary-500 text-white' 
+                              : isTodayDate 
+                                ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-500 font-semibold' 
+                                : 'hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300'
                           )}
                         >
-                          {day}
-                        </span>
-                        {dueCount > 0 && (
-                          <span className="text-xs text-primary-600 dark:text-primary-400 mt-1">
-                            {dueCount}
-                          </span>
-                        )}
-                      </button>
-                    )
-                  })}
+                          <span>{format(day, 'd')}</span>
+                          {cardsCount > 0 && (
+                            <div className={cn(
+                              'absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full',
+                              isSelected ? 'bg-white' : 'bg-primary-500'
+                            )} />
+                          )}
+                        </button>
+                      )
+                    })}
+                  </div>
                 </div>
-              </div>
-            </Card>
+              </Card>
 
-            {/* Heatmap */}
-            <div className="mb-8">
-              <Heatmap data={heatmapData} />
-            </div>
-
-            {/* Selected date details */}
-            {selectedDate && (
+              {/* Flashcards list */}
               <Card>
                 <div className="p-4 md:p-6">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                    {new Date(selectedDate).toLocaleDateString('vi-VN', {
-                      weekday: 'long',
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
+                    {selectedDate 
+                      ? format(selectedDate, 'd MMMM yyyy', { locale: vi })
+                      : 'Chọn một ngày'
+                    }
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400">
-                    {calendarMap.get(selectedDate) || 0} thẻ cần ôn tập
-                  </p>
+
+                  {selectedDate ? (
+                    selectedFlashcards.length > 0 ? (
+                      <div className="space-y-3">
+                        {selectedFlashcards.map(card => (
+                          <div
+                            key={card.id}
+                            className="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg space-y-1"
+                          >
+                            <p className="text-sm font-medium text-gray-900 dark:text-white">
+                              {card.front_text}
+                            </p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">
+                              Ôn lần {card.review_count + 1}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                        Không có flashcard nào cần ôn trong ngày này
+                      </p>
+                    )
+                  ) : (
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                      Chọn một ngày trên lịch để xem flashcards cần ôn tập
+                    </p>
+                  )}
                 </div>
               </Card>
-            )}
+            </div>
           </div>
         </main>
 
