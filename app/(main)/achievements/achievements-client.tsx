@@ -216,7 +216,7 @@ export function AchievementsClient({ stats }: AchievementsClientProps) {
                     {/* Progress */}
                     {achievement.unlocked ? (
                       <Badge variant="solid" color="success" className="w-full justify-center">
-                        <Icon name="check-circle" size={12} className="mr-1" />
+                        <Icon name="check-circle" size={16} className="mr-1" />
                         Đã mở khóa
                       </Badge>
                     ) : (
