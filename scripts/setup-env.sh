@@ -38,3 +38,4 @@ echo ""
 echo "Get your keys from: https://supabase.com/dashboard/project/_/settings/api"
 echo ""
 
+

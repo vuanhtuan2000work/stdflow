@@ -501,3 +501,4 @@ LEFT JOIN public.class_members cm ON c.id = cm.class_id AND cm.status = 'active'
 LEFT JOIN public.profiles p ON c.teacher_id = p.id
 GROUP BY c.id, p.full_name;
 
+

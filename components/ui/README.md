@@ -16,3 +16,4 @@ Each component should:
 - Follow the component example in `.cursorrules`
 - Match exact spacing/colors from design spec
 
+

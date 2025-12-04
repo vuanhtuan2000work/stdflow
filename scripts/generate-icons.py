@@ -47,3 +47,4 @@ if __name__ == "__main__":
     create_icon(512, f"{ICON_DIR}/icon-512x512.png")
     print("✅ All icons generated!")
 
+

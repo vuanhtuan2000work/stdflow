@@ -55,3 +55,4 @@ export function SubjectCard({ name, color, icon, cardCount, onClick, className }
   )
 }
 
+

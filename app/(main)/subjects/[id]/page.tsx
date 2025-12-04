@@ -40,3 +40,4 @@ export default async function SubjectDetailPage({
   return <SubjectDetailClient subject={subject} flashcardCount={count || 0} />
 }
 
+

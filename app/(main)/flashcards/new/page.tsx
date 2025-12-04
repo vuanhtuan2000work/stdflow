@@ -28,3 +28,4 @@ export default async function NewFlashcardPage({
   return <CreateFlashcardClient subjects={subjects || []} defaultSubjectId={params.subject} />
 }
 
+

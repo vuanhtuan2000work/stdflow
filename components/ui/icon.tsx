@@ -82,3 +82,4 @@ export function Icon({ name, size = 24, className, color = 'default' }: IconProp
 // Export icon names for type safety
 export type IconName = keyof typeof iconMap
 
+

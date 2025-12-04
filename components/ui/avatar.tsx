@@ -89,3 +89,4 @@ export function Avatar({ src, alt, name, size = 40, className }: AvatarProps) {
   )
 }
 
+

@@ -39,3 +39,4 @@ export default async function SubjectsPage() {
   return <SubjectsClient subjects={subjectsWithCounts} />
 }
 
+

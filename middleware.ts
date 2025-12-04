@@ -57,7 +57,19 @@ export async function middleware(request: NextRequest) {
   // Refresh session if expired - required for Server Components
   const {
     data: { user },
+    error: userError,
   } = await supabase.auth.getUser()
+
+  // Debug logs (only in development)
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`🔐 [Middleware] Path: ${request.nextUrl.pathname}`)
+    console.log(`🔐 [Middleware] User:`, {
+      hasUser: !!user,
+      userId: user?.id,
+      userEmail: user?.email,
+      error: userError?.message,
+    })
+  }
 
   // Protect routes that require authentication
   const isAuthRoute = request.nextUrl.pathname.startsWith('/login') || 
@@ -70,25 +82,78 @@ export async function middleware(request: NextRequest) {
 
   // Redirect unauthenticated users away from protected routes
   if (isProtectedRoute && !user) {
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`🔐 [Middleware] ❌ No user, redirecting to /login`)
+    }
     const redirectUrl = request.nextUrl.clone()
     redirectUrl.pathname = '/login'
     redirectUrl.searchParams.set('redirectedFrom', request.nextUrl.pathname)
-    return NextResponse.redirect(redirectUrl)
+    // Copy cookies from response to redirect response
+    const redirectResponse = NextResponse.redirect(redirectUrl)
+    response.cookies.getAll().forEach((cookie) => {
+      redirectResponse.cookies.set(cookie.name, cookie.value, {
+        path: cookie.path,
+        domain: cookie.domain,
+        maxAge: cookie.maxAge,
+        expires: cookie.expires,
+        httpOnly: cookie.httpOnly,
+        secure: cookie.secure,
+        sameSite: cookie.sameSite as any,
+      })
+    })
+    return redirectResponse
   }
 
   // Redirect authenticated users away from auth routes
   if (isAuthRoute && user) {
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`🔐 [Middleware] ✅ User authenticated, checking profile...`)
+    }
     // Check if user has completed profile setup
-    const { data: profile } = await supabase
+    const { data: profile, error: profileError } = await supabase
       .from('profiles')
       .select('username')
       .eq('id', user.id)
       .single()
 
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`🔐 [Middleware] Profile check:`, {
+        hasProfile: !!profile,
+        hasUsername: !!profile?.username,
+        profileError: profileError?.message,
+      })
+    }
+
     if (profile?.username) {
-      return NextResponse.redirect(new URL('/dashboard', request.url))
+      const redirectResponse = NextResponse.redirect(new URL('/dashboard', request.url))
+      // Copy cookies from response to redirect response
+      response.cookies.getAll().forEach((cookie) => {
+        redirectResponse.cookies.set(cookie.name, cookie.value, {
+          path: cookie.path,
+          domain: cookie.domain,
+          maxAge: cookie.maxAge,
+          expires: cookie.expires,
+          httpOnly: cookie.httpOnly,
+          secure: cookie.secure,
+          sameSite: cookie.sameSite as any,
+        })
+      })
+      return redirectResponse
     } else {
-      return NextResponse.redirect(new URL('/setup-profile', request.url))
+      const redirectResponse = NextResponse.redirect(new URL('/setup-profile', request.url))
+      // Copy cookies from response to redirect response
+      response.cookies.getAll().forEach((cookie) => {
+        redirectResponse.cookies.set(cookie.name, cookie.value, {
+          path: cookie.path,
+          domain: cookie.domain,
+          maxAge: cookie.maxAge,
+          expires: cookie.expires,
+          httpOnly: cookie.httpOnly,
+          secure: cookie.secure,
+          sameSite: cookie.sameSite as any,
+        })
+      })
+      return redirectResponse
     }
   }
 
