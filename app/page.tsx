@@ -2,6 +2,14 @@ import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 
 export default async function HomePage() {
+  // TEMPORARY BYPASS: Set to true to bypass auth (for testing only)
+  const BYPASS_AUTH = process.env.BYPASS_AUTH === 'true' || true // TEMP: Always bypass
+  
+  // If bypass is enabled, redirect straight to dashboard
+  if (BYPASS_AUTH) {
+    redirect('/dashboard')
+  }
+  
   console.log('🏠 [HomePage] Starting...')
   
   const supabase = await createClient()
